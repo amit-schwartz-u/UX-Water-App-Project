@@ -21,48 +21,44 @@
 
     <EditText
         android:id="@+id/enter_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:hint="@string/enter_name_hint"
-        android:inputType="textLongMessage|textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_label"
-        android:autofillHints="" />
-
-    <TextView
-        android:id="@+id/tv_age_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/tv_age_label"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/enter_name"
-        app:layout_constraintTop_toBottomOf="@+id/enter_name"
-        tools:ignore="MissingConstraints" />
+        android:ems="10"
+        android:hint="@string/enter_name_hint"
+        android:inputType="textLongMessage|textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name_label" />
 
-    <EditText
-        android:id="@+id/enter_age"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_birth_date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:text="@string/date_of_birth"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_name"
+        tools:ignore="MissingConstraints" />
+
+
+    <EditText
+        android:id="@+id/et_enter_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="@string/et_enter_age"
-        android:inputType="textLongMessage|textPersonName"
-        app:layout_constraintEnd_toStartOf="@id/tv_age_label"
-        app:layout_constraintStart_toStartOf="@id/tv_age_label"
-        app:layout_constraintTop_toBottomOf="@+id/tv_age_label"
-        android:autofillHints="" />
+        android:hint="@string/enter_your_birthday"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_birth_date" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
