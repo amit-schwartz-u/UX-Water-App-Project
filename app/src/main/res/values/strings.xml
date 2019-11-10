@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WaterYourself</string>
+    <string name="next">next</string>
+    <string name="enter_name_hint">Enter Your Name</string>
+    <string name="name">Name:</string>
+    <string name="tv_age_label">Age:</string>
+    <string name="et_enter_age">Enter Your Age</string>
 </resources>
