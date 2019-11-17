@@ -7,11 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".CupsActivity">
 
-    <android.support.v4.view.ViewPager
-        android:foregroundGravity = ""
-        >
 
-    </android.support.v4.view.ViewPager>
-
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:foregroundGravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:layout_centerInParent="true"/>
+<!--        android:layout_marginStart="38dp"-->
+<!--        android:layout_marginLeft="38dp"-->
+<!--        android:layout_marginTop="110dp"-->
 
 </RelativeLayout>
