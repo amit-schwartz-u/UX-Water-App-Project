@@ -12,4 +12,7 @@
     <string name="gender_label">Gender:</string>
     <string name="female_radio">Female</string>
     <string name="male_radio">Male</string>
+    <string name="welcome_login">Welcome to WaterYourself! \nOur app needs to know a few details about you, in order to provide the best fit</string>
+    <string name="enter_your_height">Enter your height</string>
+    <string name="height_label">Height:</string>
 </resources>
