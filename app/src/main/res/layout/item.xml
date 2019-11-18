@@ -18,15 +18,15 @@
             android:layout_height="300dp">
 
             <ImageView
-                android:id="@+id/image_cup200"
+                android:id="@+id/iv_image"
                 android:src="@drawable/cup200"
                 android:layout_width="match_parent"
                 android:layout_height="200dp" />
 
             <TextView
-                android:id="@+id/tv_title_cup200"
+                android:id="@+id/tv_title"
                 android:textColor="#262626"
-                android:layout_below="@+id/image_cup200"
+                android:layout_below="@+id/iv_image"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
@@ -37,8 +37,8 @@
             </TextView>
 
             <TextView
-                android:id="@+id/tv_descr_200"
-                android:layout_below="@+id/tv_title_cup200"
+                android:id="@+id/tv_desc"
+                android:layout_below="@+id/tv_title"
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
