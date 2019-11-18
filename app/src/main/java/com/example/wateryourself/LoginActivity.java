@@ -2,6 +2,7 @@ package com.example.wateryourself;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,21 +37,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private void writeToJsonFile() {
         EditText name = (EditText) findViewById(R.id.et_enter_name);
-        EditText dateOfBirth = (EditText) findViewById(R.id.et_enter_birthday);
+        EditText age = (EditText) findViewById(R.id.et_enter_age);
         EditText weight = (EditText) findViewById(R.id.et_enter_weight);
         EditText height = (EditText) findViewById(R.id.et_enter_height);
         CompositionJson compositionJso = new CompositionJson();
-        JSONObject jsonObject = compositionJso.makeJSONObject(name.getText().toString(), dateOfBirth.getText().toString(),weight.getText().toString(), height.getText().toString());
+        JSONObject jsonObject = compositionJso.makeJSONObject(name.getText().toString(), age.getText().toString(), weight.getText().toString(), height.getText().toString());
         //todo gender
+
         try {
-            File file = new File("storage/sdcard/MyIdea/MyCompositions/" + compoTitle + ".json");
+            String filename ="login.json";
+            File file = new File(getApplicationContext().getFilesDir(), filename);
             Writer output = new BufferedWriter(new FileWriter(file));
             output.write(jsonObject.toString());
             output.close();
-
-        }
-        catch (Exception e) {
-            Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
