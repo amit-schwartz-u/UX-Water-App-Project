@@ -7,48 +7,23 @@
     android:gravity="center_vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="8dp">
+        android:layout_gravity=""
+        android:layout_margin="8dp"
+        app:cardCornerRadius="38dp">
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/iv_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/cup200"
-                android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:visibility="visible"
+                android:onClick="addAmount"/>
 
-            <TextView
-                android:id="@+id/tv_title"
-                android:textColor="#262626"
-                android:layout_below="@+id/iv_image"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:text="Small cup"
-                android:textSize="16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </TextView>
-
-            <TextView
-                android:id="@+id/tv_desc"
-                android:layout_below="@+id/tv_title"
-                android:layout_marginTop="3dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginRight="16dp"
-                android:maxLines="1"
-                android:drawablePadding="10dp"
-                android:ellipsize="end"
-                android:text="200 ml"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </TextView>
 
         </RelativeLayout>
 
