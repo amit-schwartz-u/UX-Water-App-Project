@@ -1,19 +1,17 @@
 <resources>
     <string name="app_name">WaterYourself</string>
     <string name="next">next</string>
-    <string name="enter_name_hint">Enter Your Name</string>
+    <string name="enter_name_hint">exmple: Amit</string>
     <string name="name">Name:</string>
     <string name="tv_age_label">Age:</string>
-    <string name="et_enter_age">Enter Your Age</string>
-    <string name="date_of_birth">Date Of Birth:</string>
-    <string name="enter_your_birthday">Enter Your Birthday</string>
+    <string name="et_enter_age">example: 20</string>
     <string name="weight">Weight:</string>
-    <string name="enter_your_weight">Enter Your Weight</string>
+    <string name="enter_your_weight">(in kg) example: 60</string>
     <string name="gender_label">Gender:</string>
     <string name="female_radio">Female</string>
     <string name="male_radio">Male</string>
     <string name="welcome_login">Welcome to WaterYourself! \nOur app needs to know a few details about you, in order to provide the best fit</string>
-    <string name="enter_your_height">Enter your height, example 1.70</string>
+    <string name="enter_your_height">(in cm) example: 1.70</string>
     <string name="height_label">Height:</string>
     <string name="submit_button">Submit</string>
 </resources>

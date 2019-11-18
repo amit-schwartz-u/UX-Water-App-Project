@@ -12,8 +12,6 @@
         android:layout_gravity=""
         android:layout_margin="8dp"
         app:cardCornerRadius="38dp">
-
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
