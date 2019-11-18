@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -31,6 +32,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void launchCupsActivity(View view) {
         writeToJsonFile();
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = reader.edit();
+        editor.putBoolean("is_first", false);
+        editor.commit();
         Intent intent = new Intent(this, CupsActivity.class); //todo change this?
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
