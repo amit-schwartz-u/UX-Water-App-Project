@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="cup200color">#bcd9ea</color>
+    <color name="cup500color">#8bbdd9</color>
+<!--    <color name="bottle750color">#298fca</color>-->
+<!--    <color name="bottle1color">#0079bf</color>-->
 </resources>
