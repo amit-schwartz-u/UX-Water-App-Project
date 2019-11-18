@@ -11,6 +11,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
+    private Boolean isFirstRun = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,14 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);//todo add if
+                Intent i = null;
+                if (isFirstRun) {
+                    //show start activity
+                    i = new Intent(MainActivity.this, LoginActivity.class);
+                    isFirstRun = false;
+                } else {
+                    i = new Intent(MainActivity.this, CupsActivity.class);
+                }
                 startActivity(i);
                 finish();
             }
