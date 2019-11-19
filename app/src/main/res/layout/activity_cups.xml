@@ -8,6 +8,17 @@
     tools:context=".CupsActivity">
 
 
+    <TextView
+        android:id="@+id/tv_hello_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:textSize="26sp"
+        android:visibility="visible" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:foregroundGravity="center"

@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.animation.ArgbEvaluator;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,21 +20,49 @@ import java.util.List;
 
 public class CupsActivity extends AppCompatActivity {
 
+    private static final String NAME_STR = "STRING OF USERNAME";
     ViewPager viewPager;
     Adapter adapter;
     Drawable[] backgrounds = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     List<Model> models;
 
+    String mName;
     int currentImage = 0;
-    int[] counters = {0,0,0,0};
+    int[] counters = {0, 0, 0, 0};
     int currentAmount = 0; //todo:extract from JSON
+
+
+    // Shared preferences object
+    private SharedPreferences mPreferences;
+
+    // Name of shared preferences file
+    private String waterYourselfFile =
+            "com.example.android.waterYourselfprefs";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
+        Intent intent = getIntent();
+        if (intent.getStringExtra(MainActivity.FROM_MAIN).equals("LOGIN")) {
+            mName = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
+
+            final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+            final SharedPreferences.Editor preferencesEditor = reader.edit();
+//            SharedPreferences.Editor preferencesEditor = mPreferences.edit();
+            preferencesEditor.putString(NAME_STR, mName);
+            preferencesEditor.apply();
+        } else {
+
+            mPreferences = getSharedPreferences(waterYourselfFile, MODE_PRIVATE);
+            mName =mPreferences.getString(NAME_STR,mName);
+
+        }
+        TextView textView = findViewById(R.id.tv_hello_name);
+        textView.setText(String.format("Welcome %s !!", mName));
+
 
         models = new ArrayList<>();
         models.add(new Model(R.drawable.cup200));
@@ -63,7 +95,7 @@ public class CupsActivity extends AppCompatActivity {
                 } else {
 //                    viewPager.setBackgroundColor(colors[colors.length - 1]);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        viewPager.setBackground(backgrounds[backgrounds.length-1]);
+                        viewPager.setBackground(backgrounds[backgrounds.length - 1]);
                     }
                 }
                 currentImage = position;
@@ -89,7 +121,7 @@ public class CupsActivity extends AppCompatActivity {
 //        Drawable image = im.getDrawable();
         counters[currentImage]++;
         Toast toast = Toast.makeText(getApplicationContext(),
-                String.valueOf(counters[currentImage]),Toast.LENGTH_SHORT);
+                String.valueOf(counters[currentImage]), Toast.LENGTH_SHORT);
         toast.show();
     }
 }

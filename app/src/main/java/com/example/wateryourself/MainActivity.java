@@ -12,6 +12,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
+    public static final String FROM_MAIN = "called from main" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     i = new Intent(MainActivity.this, LoginActivity.class);
                 } else {
                     i = new Intent(MainActivity.this, CupsActivity.class);
+                    i.putExtra(MainActivity.FROM_MAIN,"MAIN");
                 }
                 startActivity(i);
                 finish();

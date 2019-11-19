@@ -20,10 +20,17 @@ import java.io.Writer;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private EditText mEnterNameEditText;
+
+    public static final String EXTRA_MESSAGE
+            = "com.example.android.WaterYourself.extra.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mEnterNameEditText = (EditText)findViewById(R.id.et_enter_name);
     }
 
     public void onRadioButtonClicked(View view) {
@@ -31,12 +38,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchCupsActivity(View view) {
-        writeToJsonFile();
+//        writeToJsonFile();  #todo add this
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = reader.edit();
         editor.putBoolean("is_first", false);
         editor.commit();
         Intent intent = new Intent(this, CupsActivity.class); //todo change this?
+        String name = mEnterNameEditText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, name);
+        intent.putExtra(MainActivity.FROM_MAIN,"LOGIN");
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 
