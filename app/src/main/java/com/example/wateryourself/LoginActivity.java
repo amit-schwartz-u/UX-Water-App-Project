@@ -8,15 +8,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.Writer;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,11 +47,13 @@ public class LoginActivity extends AppCompatActivity {
         //todo gender
 
         try {
-            String filename ="login.json";
-            File file = new File(getApplicationContext().getFilesDir(), filename);
-            Writer output = new BufferedWriter(new FileWriter(file));
-            output.write(jsonObject.toString());
-            output.close();
+            String fileName ="login.json";
+            File file = new File(getApplicationContext().getFilesDir(),fileName);
+            FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+            if (jsonObject != null) {
+                fos.write(jsonObject.toString().getBytes());
+            }
+            fos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
