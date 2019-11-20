@@ -11,6 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,15 +30,17 @@ public class CupsActivity extends AppCompatActivity {
     List<Model> models;
 
     int currentImage = 0;
-    int[] counters = {0,0,0,0};
+    int[] counters = {0, 0, 0, 0};
     int currentAmount = 0; //todo:extract from JSON
+
+    String userName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
-
+        setUserName();
         models = new ArrayList<>();
         models.add(new Model(R.drawable.cup200));
         models.add(new Model(R.drawable.cup500));
@@ -63,7 +72,7 @@ public class CupsActivity extends AppCompatActivity {
                 } else {
 //                    viewPager.setBackgroundColor(colors[colors.length - 1]);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        viewPager.setBackground(backgrounds[backgrounds.length-1]);
+                        viewPager.setBackground(backgrounds[backgrounds.length - 1]);
                     }
                 }
                 currentImage = position;
@@ -82,6 +91,25 @@ public class CupsActivity extends AppCompatActivity {
 
     }
 
+    private void setUserName() { //todo use var userName
+        try {
+            InputStream is = openFileInput("login.json");
+            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            JSONObject reader = new JSONObject(sb.toString());
+            JSONObject user = reader.getJSONObject("curUser");
+            userName = user.getString("name");
+        } catch (JSONException e) { //todo change exceptions
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void addAmount(View view) {
 
@@ -89,7 +117,7 @@ public class CupsActivity extends AppCompatActivity {
 //        Drawable image = im.getDrawable();
         counters[currentImage]++;
         Toast toast = Toast.makeText(getApplicationContext(),
-                String.valueOf(counters[currentImage]),Toast.LENGTH_SHORT);
+                String.valueOf(counters[currentImage]), Toast.LENGTH_SHORT);
         toast.show();
     }
 }
