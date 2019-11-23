@@ -31,7 +31,7 @@ public class CupsActivity extends AppCompatActivity {
 
     int currentImage = 0;
     int[] counters = {0, 0, 0, 0};
-    int currentAmount = 0; //todo:extract from JSON
+    int currentWaterAmount; 
 
     String userName;
 
@@ -41,6 +41,7 @@ public class CupsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
         setUserName();
+        setCurrentWaterAmount();
         models = new ArrayList<>();
         models.add(new Model(R.drawable.cup200));
         models.add(new Model(R.drawable.cup500));
@@ -89,6 +90,25 @@ public class CupsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setCurrentWaterAmount() {
+        try {
+            InputStream is = openFileInput("drinkingStatus.json");
+            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            JSONObject reader = new JSONObject(sb.toString());
+            currentWaterAmount = reader.getInt("currentWaterAmount");
+        } catch (JSONException e) { //todo change exceptions
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setUserName() { //todo use var userName
