@@ -28,7 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchCupsActivity(View view) {
-        writeToJsonFile();
+        writeLoginUserInputToJsonFile();
+        setDrinkingStatusFile();
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = reader.edit();
         editor.putBoolean("is_first", false);
@@ -37,7 +38,23 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 
-    private void writeToJsonFile() {
+    private void setDrinkingStatusFile() {
+        try {
+            JSONObject jsonObject =  new JSONObject();
+            jsonObject.put("currentWaterAmount", "0");
+            String fileName ="drinkingStatus.json";
+            File file = new File(getApplicationContext().getFilesDir(),fileName);
+            FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+            if (jsonObject != null) {
+                fos.write(jsonObject.toString().getBytes());
+            }
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeLoginUserInputToJsonFile() {
         EditText name = (EditText) findViewById(R.id.et_enter_name);
         EditText age = (EditText) findViewById(R.id.et_enter_age);
         EditText weight = (EditText) findViewById(R.id.et_enter_weight);
