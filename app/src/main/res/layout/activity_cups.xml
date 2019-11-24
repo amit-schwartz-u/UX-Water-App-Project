@@ -44,5 +44,64 @@
         android:text="Update"
         android:textSize="18sp" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="85dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true">
 
+
+        <ImageView
+            android:id="@+id/iv_littlecup200"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/little200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="5dp">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/iv_littlecup500"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/iv_littlecup200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/little500"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/iv_littlebottle750"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/iv_littlecup500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/little750"
+            android:layout_marginStart="5dp">
+
+        </ImageView>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/iv_littlebottle1"
+            android:layout_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/iv_littlebottle750"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/little1000"
+            android:layout_marginStart="5dp">
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
