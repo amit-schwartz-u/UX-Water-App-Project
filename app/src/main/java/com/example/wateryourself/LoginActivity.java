@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
             jsonObject.put("currentWaterAmount", "0");
             String fileName = "drinkingStatus.json";
             File file = new File(getApplicationContext().getFilesDir(), fileName);
+
             FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
             if (jsonObject != null) {
                 fos.write(jsonObject.toString().getBytes());
