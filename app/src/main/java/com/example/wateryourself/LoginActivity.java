@@ -8,15 +8,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.Writer;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -38,7 +35,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchCupsActivity(View view) {
-//        writeToJsonFile();  #todo add this
+
+        writeLoginUserInputToJsonFile();
+        setDrinkingStatusFile();
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = reader.edit();
         editor.putBoolean("is_first", false);
@@ -50,7 +49,23 @@ public class LoginActivity extends AppCompatActivity {
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 
-    private void writeToJsonFile() {
+    private void setDrinkingStatusFile() {
+        try {
+            JSONObject jsonObject =  new JSONObject();
+            jsonObject.put("currentWaterAmount", "0");
+            String fileName ="drinkingStatus.json";
+            File file = new File(getApplicationContext().getFilesDir(),fileName);
+            FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+            if (jsonObject != null) {
+                fos.write(jsonObject.toString().getBytes());
+            }
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeLoginUserInputToJsonFile() {
         EditText name = (EditText) findViewById(R.id.et_enter_name);
         EditText age = (EditText) findViewById(R.id.et_enter_age);
         EditText weight = (EditText) findViewById(R.id.et_enter_weight);
@@ -60,11 +75,13 @@ public class LoginActivity extends AppCompatActivity {
         //todo gender
 
         try {
-            String filename ="login.json";
-            File file = new File(getApplicationContext().getFilesDir(), filename);
-            Writer output = new BufferedWriter(new FileWriter(file));
-            output.write(jsonObject.toString());
-            output.close();
+            String fileName ="login.json";
+            File file = new File(getApplicationContext().getFilesDir(),fileName);
+            FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);
+            if (jsonObject != null) {
+                fos.write(jsonObject.toString().getBytes());
+            }
+            fos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

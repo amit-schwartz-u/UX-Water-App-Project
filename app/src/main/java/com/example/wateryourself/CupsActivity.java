@@ -15,6 +15,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +37,10 @@ public class CupsActivity extends AppCompatActivity {
     String mName;
     int currentImage = 0;
     int[] counters = {0, 0, 0, 0};
-    int currentAmount = 0; //todo:extract from JSON
+
+    int currentWaterAmount; 
+
+    String userName;
 
 
     // Shared preferences object
@@ -45,6 +55,7 @@ public class CupsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
+
         Intent intent = getIntent();
         if (intent.getStringExtra(MainActivity.FROM_MAIN).equals("LOGIN")) {
             mName = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
@@ -63,6 +74,10 @@ public class CupsActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.tv_hello_name);
         textView.setText(String.format("Welcome %s !!", mName));
 
+
+
+        setUserName();
+        setCurrentWaterAmount();
 
         models = new ArrayList<>();
         models.add(new Model(R.drawable.cup200));
@@ -114,14 +129,55 @@ public class CupsActivity extends AppCompatActivity {
 
     }
 
+    private void setCurrentWaterAmount() {
+        try {
+            InputStream is = openFileInput("drinkingStatus.json");
+            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            JSONObject reader = new JSONObject(sb.toString());
+            currentWaterAmount = reader.getInt("currentWaterAmount");
+        } catch (JSONException e) { //todo change exceptions
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setUserName() { //todo use var userName
+        try {
+            InputStream is = openFileInput("login.json");
+            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+            JSONObject reader = new JSONObject(sb.toString());
+            JSONObject user = reader.getJSONObject("curUser");
+            userName = user.getString("name");
+        } catch (JSONException e) { //todo change exceptions
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void addAmount(View view) {
-
-//        ImageView im = (ImageView)view;
-//        Drawable image = im.getDrawable();
         counters[currentImage]++;
+
+        //todo: delete dis shit
         Toast toast = Toast.makeText(getApplicationContext(),
                 String.valueOf(counters[currentImage]), Toast.LENGTH_SHORT);
         toast.show();
+        //
+
+
+
     }
 }
