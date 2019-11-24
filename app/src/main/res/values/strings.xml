@@ -15,4 +15,7 @@
     <string name="height_label">Height:</string>
     <string name="submit_button">Submit</string>
     <string name="back_to_my_plant">back to my plant</string>
+    <string name="my_plants">my plants</string>
+    <string name="drink_more">drink more</string>
+    <string name="update">Update</string>
 </resources>
