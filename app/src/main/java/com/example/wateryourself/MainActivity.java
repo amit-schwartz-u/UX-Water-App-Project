@@ -12,7 +12,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
-    public static final String FROM_MAIN = "called from main" ;
+    public static final String FROM_MAIN = "called from main" ; //todo from
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

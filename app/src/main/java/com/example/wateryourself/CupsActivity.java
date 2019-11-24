@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CupsActivity extends AppCompatActivity {
-  
+
     public static final String NAME_STR = "STRING OF USERNAME";
     private static final String AMOUNT_OF_WATER = "Amount Of Water";
     ViewPager viewPager;
@@ -28,9 +28,8 @@ public class CupsActivity extends AppCompatActivity {
     Drawable[] backgrounds = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     List<Model> models;
-
-    public static String mName;
     ImageView[] littleImageViews = new ImageView[4];
+    String mName;
     int currentImage = 0;
     int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
@@ -38,7 +37,6 @@ public class CupsActivity extends AppCompatActivity {
     int chosenWaterAmount; //todo delete
 
     String userName;
-    private int addWater;
 
 
     // Shared preferences object
@@ -96,7 +94,6 @@ public class CupsActivity extends AppCompatActivity {
 //                        viewPager.setBackground(backgrounds[backgrounds.length - 1]);
 //                    }
 //                }
-                viewPager.setBackground(getResources().getDrawable(R.drawable.cupsbackground));
                 currentImage = position;
             }
 
@@ -196,9 +193,4 @@ public class CupsActivity extends AppCompatActivity {
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 
-    public void launchDailyActivity(View view) {
-        Intent intent = new Intent(this, DailyActivity.class);
-        intent.putExtra("Water Amount to Add", addWater);
-        startActivity(intent);
-    }
 }
