@@ -132,12 +132,15 @@ public class CupsActivity extends AppCompatActivity {
     }
 
     public void addAmount(View view) {
-
-//        ImageView im = (ImageView)view;
-//        Drawable image = im.getDrawable();
         counters[currentImage]++;
+
+        //todo: delete dis shit
         Toast toast = Toast.makeText(getApplicationContext(),
                 String.valueOf(counters[currentImage]), Toast.LENGTH_SHORT);
         toast.show();
+        //
+
+
+
     }
 }
