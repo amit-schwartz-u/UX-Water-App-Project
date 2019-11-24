@@ -20,13 +20,20 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity {
     TextView output;
     EditText age;
+    private EditText mEnterNameEditText;
+
+    public static final String EXTRA_MESSAGE
+            = "com.example.android.WaterYourself.extra.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mEnterNameEditText = (EditText)findViewById(R.id.et_enter_name);
         output = (TextView)findViewById(R.id.tv_age);
         age = (EditText)findViewById(R.id.et_enter_age);
         age.addTextChangedListener(new TextWatcher() {
@@ -54,14 +61,19 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     public void launchCupsActivity(View view) {
+
         writeLoginUserInputToJsonFile();
         setDrinkingStatusFile();
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = reader.edit();
         editor.putBoolean("is_first", false);
         editor.commit();
-        Intent intent = new Intent(this, CupsActivity.class); //todo change this?
+        Intent intent = new Intent(this, CupsActivity.class);
+        String name = mEnterNameEditText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, name);
+        intent.putExtra(MainActivity.FROM_MAIN,"LOGIN");
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
+        finish();
     }
 
     private void setDrinkingStatusFile() {
