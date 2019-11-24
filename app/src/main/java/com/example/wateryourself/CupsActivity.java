@@ -31,7 +31,7 @@ public class CupsActivity extends AppCompatActivity {
 
     int currentImage = 0;
     int[] counters = {0, 0, 0, 0};
-    int currentWaterAmount; 
+    static int currentWaterAmount;
 
     String userName;
 
