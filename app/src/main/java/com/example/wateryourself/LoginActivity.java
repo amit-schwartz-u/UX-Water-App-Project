@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
     private void setDrinkingStatusFile() {
         try {
             JSONObject jsonObject =  new JSONObject();
-            jsonObject.put("currentWaterAmount", "0");
+            jsonObject.put("chosenWaterAmount", "0");
             String fileName ="drinkingStatus.json";
             File file = new File(getApplicationContext().getFilesDir(),fileName);
             FileOutputStream fos = openFileOutput(fileName, Context.MODE_PRIVATE);

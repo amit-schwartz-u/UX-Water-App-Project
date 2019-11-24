@@ -26,6 +26,7 @@
         android:id="@+id/viewPager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
         android:clipToPadding="false"
         android:foregroundGravity="center"
         android:overScrollMode="never">
@@ -35,34 +36,60 @@
     <!--        android:layout_marginLeft="38dp"-->
     <!--        android:layout_marginTop="110dp"-->
     <Button
-        android:layout_width="100dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:ellipsize="marquee"
         android:text="Update"
+        android:onClick="launchDailyActivity"
         android:textSize="18sp" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/clean_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="85dp"
+        android:layout_above="@+id/little_cups_display_layout"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="15dp">
+
+
+        <Button
+            android:id="@+id/clean_all_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Clean All"
+            android:onClick="cleanAmountChosen"
+            >
+
+        </Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/little_cups_display_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+
+        android:layout_marginBottom="85dp">
 
 
         <ImageView
             android:id="@+id/iv_littlecup200"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:src="@drawable/little200"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginStart="5dp">
+            app:layout_constraintLeft_toLeftOf="parent">
 
         </ImageView>
 
@@ -70,38 +97,40 @@
             android:id="@+id/iv_littlecup500"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            app:layout_constraintLeft_toRightOf="@id/iv_littlecup200"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/little500"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/iv_littlecup200">
 
         </ImageView>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
             android:id="@+id/iv_littlebottle750"
-            android:layout_weight="1"
-            app:layout_constraintLeft_toRightOf="@id/iv_littlecup500"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:src="@drawable/little750"
-            android:layout_marginStart="5dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/iv_littlecup500">
 
         </ImageView>
 
         <ImageView
+            android:id="@+id/iv_littlebottle1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/iv_littlebottle1"
-            android:layout_weight="1"
-            app:layout_constraintLeft_toRightOf="@id/iv_littlebottle750"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_weight="1"
             android:src="@drawable/little1000"
-            android:layout_marginStart="5dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/iv_littlebottle750">
+
+
         </ImageView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </RelativeLayout>
