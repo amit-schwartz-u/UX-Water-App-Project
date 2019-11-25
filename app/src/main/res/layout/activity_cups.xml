@@ -193,6 +193,8 @@
                 android:id="@+id/iv_littlebottle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:src="@drawable/little1000">
 
 
