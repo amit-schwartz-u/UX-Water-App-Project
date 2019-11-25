@@ -23,14 +23,14 @@ import java.util.List;
 public class CupsActivity extends AppCompatActivity {
 
     public static final String NAME_STR = "STRING OF USERNAME";
-    private static final String AMOUNT_OF_WATER = "Amount Of Water";
+    public static final String AMOUNT_OF_WATER = "Amount Of Water";
     ViewPager viewPager;
     Adapter adapter;
     Drawable[] backgrounds = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     List<Model> models;
     ImageView[] littleImageViews = new ImageView[4];
-    String mName;
+    static String mName;
     int currentImage = 0;
     int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
