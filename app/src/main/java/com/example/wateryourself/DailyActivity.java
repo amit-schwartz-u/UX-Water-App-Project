@@ -14,7 +14,7 @@ public class DailyActivity extends AppCompatActivity {
     private static final String FROM_DAILY = "call from daily"; //todo use
     private static final String CUR_WATER_AMOUNT = "CUR WATER AMOUNT";
     private int curWaterAmount = 0;
-    ConstraintLayout rl;
+    ConstraintLayout dailyConstraintLayout;
     // Shared preferences object
     private SharedPreferences mPreferences;
 
@@ -38,15 +38,15 @@ public class DailyActivity extends AppCompatActivity {
     }
 
     private void setActivityBackgroundImage() {
-        rl = findViewById(R.id.constraintLayout1); //todo rename r1
+        dailyConstraintLayout = findViewById(R.id.constraintLayout1);
         if (curWaterAmount <= 625) {
-            rl.setBackgroundResource(R.drawable.carrot1_daily);
+            dailyConstraintLayout.setBackgroundResource(R.drawable.carrot1_daily);
         } else if (curWaterAmount <= 1250) {
-            rl.setBackgroundResource(R.drawable.carrot2_daily);
+            dailyConstraintLayout.setBackgroundResource(R.drawable.carrot2_daily);
         } else if (curWaterAmount <= 2000) {
-            rl.setBackgroundResource(R.drawable.carrot3_daily);
+            dailyConstraintLayout.setBackgroundResource(R.drawable.carrot3_daily);
         } else {
-            rl.setBackgroundResource(R.drawable.carrot4_daily);
+            dailyConstraintLayout.setBackgroundResource(R.drawable.carrot4_daily);
         }
 
     }

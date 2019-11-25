@@ -26,7 +26,6 @@ public class CupsActivity extends AppCompatActivity {
     public static final String AMOUNT_OF_WATER = "Amount Of Water";
     ViewPager viewPager;
     Adapter adapter;
-    Drawable[] backgrounds = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
     List<Model> models;
     ImageView[] littleImageViews = new ImageView[4];
@@ -57,8 +56,6 @@ public class CupsActivity extends AppCompatActivity {
         updateUserName(intent);
         fillTextViewCountAmmount();
         makeInvisibleIV();
-//        setUserName();
-//        setCurrentWaterAmount();
 
         models = new ArrayList<>();
         models.add(new Model(R.drawable.cup200));
@@ -72,29 +69,10 @@ public class CupsActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.setPadding(130, 0, 130, 0);
 
-//        Drawable[] background_temp = {getResources().getDrawable(R.drawable.back1),
-//                getResources().getDrawable(R.drawable.back2),
-//                getResources().getDrawable(R.drawable.back3),
-//                getResources().getDrawable(R.drawable.back4)};
-
-//        backgrounds = background_temp;
-
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                if (position < (adapter.getCount() - 1) && position < (backgrounds.length - 1)) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                        viewPager.setBackground(backgrounds[position]);
-//                    }
-////                    viewPager.setBackgroundColor((Integer) argbEvaluator.evaluate(positionOffset,
-////                            backgrounds[position], backgrounds[position + 1]));
-//                } else {
-////                    viewPager.setBackgroundColor(colors[colors.length - 1]);
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-//                        viewPager.setBackground(backgrounds[backgrounds.length - 1]);
-//                    }
-//                }
                 currentImage = position;
             }
 
