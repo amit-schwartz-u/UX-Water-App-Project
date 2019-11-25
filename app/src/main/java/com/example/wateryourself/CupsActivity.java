@@ -62,7 +62,8 @@ public class CupsActivity extends AppCompatActivity {
         models.add(new Model(R.drawable.bottle750));
         models.add(new Model(R.drawable.bottle1));
 
-
+        Button updateButton = findViewById(R.id.update_button);
+        updateButton.setVisibility(View.INVISIBLE);
         adapter = new Adapter(models, this);
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
@@ -162,7 +163,8 @@ public class CupsActivity extends AppCompatActivity {
             littleImageViews[currentImage].setVisibility(View.VISIBLE);
         }
         tv_display_amount[currentImage].setText(Integer.toString(counters[currentImage]));
-
+        Button updateButton = findViewById(R.id.update_button);
+        updateButton.setVisibility(View.VISIBLE);
 
 
     }
@@ -174,6 +176,8 @@ public class CupsActivity extends AppCompatActivity {
             tv_display_amount[i].setText("");
         }
         changeCleanAllBtnMode(View.INVISIBLE);
+        Button updateButton = findViewById(R.id.update_button);
+        updateButton.setVisibility(View.INVISIBLE);
 
     }
 

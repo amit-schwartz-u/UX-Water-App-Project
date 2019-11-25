@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = reader.edit();
-        editor.putBoolean("is_first", true);
-        editor.commit();
+//        editor.putBoolean("is_first", true);
+//        editor.commit();
         //Time to launch the another activity
         int TIME_OUT = 3000;
         new Handler().postDelayed(new Runnable() {
