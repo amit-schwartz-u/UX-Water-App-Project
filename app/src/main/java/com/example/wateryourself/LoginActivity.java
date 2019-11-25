@@ -24,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView output;
     EditText age;
     private EditText mEnterNameEditText;
+    private static final String CUR_WATER_AMOUNT = "CUR WATER AMOUNT";
+    private int curWaterAmount = 0;
 
     public static final String EXTRA_MESSAGE
             = "com.example.android.WaterYourself.extra.MESSAGE";
@@ -65,9 +67,10 @@ public class LoginActivity extends AppCompatActivity {
         writeLoginUserInputToJsonFile();
         setDrinkingStatusFile();
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = reader.edit();
-        editor.putBoolean("is_first", false);
-        editor.commit();
+        final SharedPreferences.Editor preferencesEditor = reader.edit();
+        preferencesEditor.putBoolean("is_first", false);
+        preferencesEditor.putInt(CUR_WATER_AMOUNT, curWaterAmount);
+        preferencesEditor.apply();
         Intent intent = new Intent(this, CupsActivity.class);
         String name = mEnterNameEditText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, name);
