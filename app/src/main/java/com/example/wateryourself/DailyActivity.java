@@ -40,13 +40,13 @@ public class DailyActivity extends AppCompatActivity {
     private void setActivityBackgroundImage() {
         rl = findViewById(R.id.constraintLayout1); //todo rename r1
         if (curWaterAmount <= 625) {
-            rl.setBackgroundResource(R.drawable.daily1);
+            rl.setBackgroundResource(R.drawable.carrot1_daily);
         } else if (curWaterAmount <= 1250) {
-            rl.setBackgroundResource(R.drawable.daily2);
+            rl.setBackgroundResource(R.drawable.carrot2_daily);
         } else if (curWaterAmount <= 2000) {
-            rl.setBackgroundResource(R.drawable.daily3);
+            rl.setBackgroundResource(R.drawable.carrot3_daily);
         } else {
-            rl.setBackgroundResource(R.drawable.daily4);
+            rl.setBackgroundResource(R.drawable.carrot4_daily);
         }
 
     }
