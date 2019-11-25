@@ -51,6 +51,7 @@
         android:visibility="visible"
         android:text="How much water did you drink?"/>
 
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="wrap_content"

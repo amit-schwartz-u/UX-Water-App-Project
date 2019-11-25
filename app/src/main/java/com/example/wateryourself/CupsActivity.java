@@ -15,9 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
+
+//todo: write total amount when choosing cups of water on third page
 
 public class CupsActivity extends AppCompatActivity {
 
