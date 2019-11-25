@@ -108,16 +108,19 @@
                 android:id="@+id/iv_littlecup200"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:src="@drawable/little200">
 
             </ImageView>
 
             <TextView
                 android:id="@+id/tv_count_200"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:gravity="center"
                 android:textSize="30sp">
 
@@ -132,9 +135,10 @@
 
             <ImageView
                 android:id="@+id/iv_littlecup500"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:src="@drawable/little500">
 
             </ImageView>
@@ -143,7 +147,8 @@
                 android:id="@+id/tv_count_500"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:gravity="center"
                 android:textSize="30sp">
 
@@ -159,10 +164,11 @@
 
             <ImageView
                 android:id="@+id/iv_littlebottle750"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
                 android:src="@drawable/little750">
 
             </ImageView>
@@ -185,10 +191,8 @@
 
             <ImageView
                 android:id="@+id/iv_littlebottle1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/little1000">
 
 
