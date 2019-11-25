@@ -35,24 +35,24 @@ public class LoginActivity extends AppCompatActivity {
 
         mEnterNameEditText = (EditText)findViewById(R.id.et_enter_name);
         output = (TextView)findViewById(R.id.tv_age);
-        age = (EditText)findViewById(R.id.et_enter_age);
-        age.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                output.setText(s);
-                if (start == 12) {
-                    Toast.makeText(getApplicationContext(), "Maximum Limit Reached", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
+//        age = (EditText)findViewById(R.id.et_enter_age);
+//        age.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                output.setText(s);
+//                if (start == 12) {
+//                    Toast.makeText(getApplicationContext(), "Maximum Limit Reached", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//            }
+//        });
 
     }
 
