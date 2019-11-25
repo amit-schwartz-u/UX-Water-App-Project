@@ -117,7 +117,7 @@ public class CupsActivity extends AppCompatActivity {
 
         }
         TextView textView = findViewById(R.id.tv_hello_name);
-        textView.setText(String.format("Welcome %s !!", mName));
+        textView.setText(String.format("Hi %s !", mName));
     }
 
     private void changeCleanAllBtnMode(int mode) {
