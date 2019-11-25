@@ -31,11 +31,12 @@
         android:layout_below="@id/tv_hello_name"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
+        android:fontFamily="@font/offerings"
         android:layout_marginTop="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#000000"
-        android:textSize="22sp"
-        android:textStyle="italic"
+        android:textSize="25sp"
+        android:textStyle="bold"
         android:visibility="visible"
         android:text="How much water did you drink?"/>
 
