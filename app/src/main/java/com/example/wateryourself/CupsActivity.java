@@ -34,6 +34,7 @@ public class CupsActivity extends AppCompatActivity {
     int currentImage = 0;
     int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
+    TextView[] tv_display_amount = new TextView[4];
     int chosenWaterAmount; //todo delete
 
     String userName;
@@ -54,7 +55,7 @@ public class CupsActivity extends AppCompatActivity {
         changeCleanAllBtnMode(View.INVISIBLE);
         Intent intent = getIntent();
         updateUserName(intent);
-
+        fillTextViewCountAmmount();
         makeInvisibleIV();
 //        setUserName();
 //        setCurrentWaterAmount();
@@ -107,6 +108,18 @@ public class CupsActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void fillTextViewCountAmmount() {
+
+        tv_display_amount[0] = findViewById(R.id.tv_count_200);
+
+        tv_display_amount[1] = findViewById(R.id.tv_count_500);
+
+        tv_display_amount[2] = findViewById(R.id.tv_count_750);
+
+        tv_display_amount[3] = findViewById(R.id.tv_count_1000);
 
     }
 
@@ -171,6 +184,7 @@ public class CupsActivity extends AppCompatActivity {
         if (counters[currentImage] == 1) {
             littleImageViews[currentImage].setVisibility(View.VISIBLE);
         }
+        tv_display_amount[currentImage].setText(Integer.toString(counters[currentImage]));
         //todo: delete dis shit
         Toast toast = Toast.makeText(getApplicationContext(),
                 String.valueOf(counters[currentImage]), Toast.LENGTH_SHORT);

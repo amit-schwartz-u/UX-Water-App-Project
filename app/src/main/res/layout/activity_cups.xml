@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/cupsbackground"
     android:orientation="vertical"
-    tools:context=".CupsActivity"
-    android:background="@drawable/cupsbackground">
+    tools:context=".CupsActivity">
 
 
     <TextView
         android:id="@+id/tv_hello_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_alignTop="@id/viewPager"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -27,35 +28,26 @@
         android:id="@+id/viewPager"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_above="@id/little_cups_display_layout"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
         android:clipToPadding="false"
-        android:foregroundGravity="center"
+        android:foregroundGravity="bottom|center_horizontal"
         android:overScrollMode="never">
 
     </androidx.viewpager.widget.ViewPager>
     <!--        android:layout_marginStart="38dp"-->
     <!--        android:layout_marginLeft="38dp"-->
     <!--        android:layout_marginTop="110dp"-->
-    <Button
-        android:id="@+id/update_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:onClick="launchDailyActivity"
-        android:ellipsize="marquee"
-        android:text="@string/update"
-        android:textSize="18sp" />
+
 
     <LinearLayout
         android:id="@+id/clean_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/little_cups_display_layout"
-        android:orientation="horizontal"
+        android:layout_alignBottom="@id/viewPager"
         android:gravity="center"
-        android:layout_marginBottom="15dp">
+        android:orientation="horizontal">
 
 
         <Button
@@ -63,9 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="Clean All"
             android:onClick="cleanAmountChosen"
-            >
+            android:text="Clean All">
 
         </Button>
 
@@ -74,65 +65,127 @@
     <LinearLayout
         android:id="@+id/little_cups_display_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:layout_above="@id/update_button"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
 
-        android:layout_marginBottom="85dp">
-
-
-        <ImageView
-            android:id="@+id/iv_littlecup200"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/little200"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent">
+            android:layout_weight="1">
 
-        </ImageView>
+            <ImageView
+                android:id="@+id/iv_littlecup200"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/little200">
 
-        <ImageView
-            android:id="@+id/iv_littlecup500"
-            android:layout_width="wrap_content"
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_count_200"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textSize="30sp">
+
+            </TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/little500"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/iv_littlecup200">
+            android:layout_weight="1">
 
-        </ImageView>
+            <ImageView
+                android:id="@+id/iv_littlecup500"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:src="@drawable/little500">
 
-        <ImageView
-            android:id="@+id/iv_littlebottle750"
-            android:layout_width="wrap_content"
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_count_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textSize="30sp">
+
+            </TextView>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/little750"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/iv_littlecup500">
+            android:layout_weight="1">
 
-        </ImageView>
+            <ImageView
+                android:id="@+id/iv_littlebottle750"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/little750">
 
-        <ImageView
-            android:id="@+id/iv_littlebottle1"
-            android:layout_width="wrap_content"
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_count_750"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textSize="30sp">
+
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:src="@drawable/little1000"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/iv_littlebottle750">
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_littlebottle1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/little1000">
 
 
-        </ImageView>
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_count_1000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:textSize="30sp">
+
+            </TextView>
+        </RelativeLayout>
     </LinearLayout>
+
+    <Button
+        android:id="@+id/update_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:ellipsize="marquee"
+        android:onClick="launchDailyActivity"
+        android:text="update"
+        android:textSize="18sp" />
 </RelativeLayout>
