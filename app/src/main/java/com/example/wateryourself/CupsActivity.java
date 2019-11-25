@@ -138,6 +138,13 @@ public class CupsActivity extends AppCompatActivity {
         tv_display_amount[currentImage].setText(Integer.toString(counters[currentImage]));
         Button updateButton = findViewById(R.id.update_button);
         updateButton.setVisibility(View.VISIBLE);
+        int totalAmountChosen = 0; //todo: reuse of this value also in launch daily
+        for (int i = 0; i < counters.length; i++) {
+            totalAmountChosen += counters[i] * amounts[i];
+        }
+        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
+        totalAmountText.setText(String.format("Total Amount Chosen: %s ML", Integer.toString(totalAmountChosen)));
+
     }
 
     public void cleanAmountChosen(View view) {
@@ -149,6 +156,8 @@ public class CupsActivity extends AppCompatActivity {
         changeCleanAllBtnMode(View.INVISIBLE);
         Button updateButton = findViewById(R.id.update_button);
         updateButton.setVisibility(View.INVISIBLE);
+        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
+        totalAmountText.setText(String.format("Total Amount Chosen: 0 ML"));
     }
 
     public void launchDailyActivity(View view) {
