@@ -10,7 +10,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.text.TextWatcher;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView output;
     EditText age;
     private EditText mEnterNameEditText;
-    private static final String CUR_WATER_AMOUNT = "CUR WATER AMOUNT";
-    private int curWaterAmount = 0;
+    private static final String CUR_WATER_AMOUNT = "CURRENT WATER AMOUNT";
 
     public static final String EXTRA_MESSAGE
             = "com.example.android.WaterYourself.extra.MESSAGE";
@@ -69,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
         preferencesEditor.putBoolean("is_first", false);
-        preferencesEditor.putInt(CUR_WATER_AMOUNT, curWaterAmount);
+        preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
         preferencesEditor.apply();
         Intent intent = new Intent(this, CupsActivity.class);
         String name = mEnterNameEditText.getText().toString();

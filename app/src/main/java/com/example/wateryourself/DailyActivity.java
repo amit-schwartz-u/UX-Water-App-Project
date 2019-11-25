@@ -12,11 +12,9 @@ import android.widget.TextView;
 
 public class DailyActivity extends AppCompatActivity {
     private static final String FROM_DAILY = "call from daily"; //todo use
-    private static final String CUR_WATER_AMOUNT = "CUR WATER AMOUNT";
+    private static final String CUR_WATER_AMOUNT = "CURRENT WATER AMOUNT";
     private int curWaterAmount = 0;
     ConstraintLayout dailyConstraintLayout;
-    // Shared preferences object
-    private SharedPreferences mPreferences;
 
     // Name of shared preferences file
     private String waterYourselfFile =
@@ -28,6 +26,8 @@ public class DailyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daily);
         Intent intent = getIntent();
         setCurrentWaterAmount(intent);
+        TextView textView = findViewById(R.id.tv_you_drank);
+        textView.setText(String.format("you drank: %s ML today !", curWaterAmount));
         setActivityBackgroundImage();
         setWelcomeByNameInTop();
     }
