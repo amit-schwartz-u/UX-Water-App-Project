@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +33,6 @@ public class CupsActivity extends AppCompatActivity {
     int currentImage = 0;
     int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
-
     int chosenWaterAmount; //todo delete
 
     String userName;
@@ -50,7 +50,7 @@ public class CupsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
-
+        changeCleanAllBtnMode(View.INVISIBLE);
         Intent intent = getIntent();
         updateUserName(intent);
 
@@ -129,6 +129,11 @@ public class CupsActivity extends AppCompatActivity {
         textView.setText(String.format("Welcome %s !!", mName));
     }
 
+    private void changeCleanAllBtnMode(int mode) {
+        Button cleanAll = findViewById(R.id.clean_all_btn);
+        cleanAll.setVisibility(mode);
+    }
+
     private void makeInvisibleIV() {
         littleImageViews[0] = (ImageView) findViewById(R.id.iv_littlecup200);
         littleImageViews[1] = (ImageView) findViewById(R.id.iv_littlecup500);
@@ -161,6 +166,7 @@ public class CupsActivity extends AppCompatActivity {
 //    }
 
     public void addAmount(View view) {
+        changeCleanAllBtnMode(View.VISIBLE);
         counters[currentImage]++;
         if (counters[currentImage] == 1) {
             littleImageViews[currentImage].setVisibility(View.VISIBLE);
@@ -179,6 +185,7 @@ public class CupsActivity extends AppCompatActivity {
             counters[i] = 0;
             littleImageViews[i].setVisibility(View.INVISIBLE);
         }
+        changeCleanAllBtnMode(View.INVISIBLE);
 
     }
 
