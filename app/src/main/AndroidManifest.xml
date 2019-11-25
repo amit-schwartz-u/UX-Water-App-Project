@@ -12,7 +12,8 @@
         <activity android:name=".GardenActivity"></activity>
         <activity android:name=".DailyActivity" />
         <activity android:name=".CupsActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
