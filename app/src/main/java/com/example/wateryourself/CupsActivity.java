@@ -198,6 +198,7 @@ public class CupsActivity extends AppCompatActivity {
         for (int i = 0; i < counters.length; i++) {
             counters[i] = 0;
             littleImageViews[i].setVisibility(View.INVISIBLE);
+            tv_display_amount[i].setText("");
         }
         changeCleanAllBtnMode(View.INVISIBLE);
 
