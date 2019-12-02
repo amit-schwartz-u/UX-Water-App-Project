@@ -15,9 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
+
+//todo: write total amount when choosing cups of water on third page
 
 public class CupsActivity extends AppCompatActivity {
 
@@ -33,10 +34,6 @@ public class CupsActivity extends AppCompatActivity {
     int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
     TextView[] tv_display_amount = new TextView[4];
-    int chosenWaterAmount; //todo delete
-
-    String userName;
-
 
     // Shared preferences object
     private SharedPreferences mPreferences;
@@ -107,14 +104,11 @@ public class CupsActivity extends AppCompatActivity {
 
             final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
             final SharedPreferences.Editor preferencesEditor = reader.edit();
-//            SharedPreferences.Editor preferencesEditor = mPreferences.edit();
             preferencesEditor.putString(NAME_STR, mName);
             preferencesEditor.apply();
         } else {
-
             mPreferences = getSharedPreferences(waterYourselfFile, MODE_PRIVATE);
             mName = mPreferences.getString(NAME_STR, mName);
-
         }
         TextView textView = findViewById(R.id.tv_hello_name);
         textView.setText(String.format("Hi %s !", mName));
@@ -135,27 +129,6 @@ public class CupsActivity extends AppCompatActivity {
         }
     }
 
-
-//    private void setUserName() { //todo use var userName
-//        try {
-//            InputStream is = openFileInput("login.json");
-//            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
-//            BufferedReader bufferedReader = new BufferedReader(isr);
-//            StringBuilder sb = new StringBuilder();
-//            String line;
-//            while ((line = bufferedReader.readLine()) != null) {
-//                sb.append(line);
-//            }
-//            JSONObject reader = new JSONObject(sb.toString());
-//            JSONObject user = reader.getJSONObject("curUser");
-//            userName = user.getString("name");
-//        } catch (JSONException e) { //todo change exceptions
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     public void addAmount(View view) {
         changeCleanAllBtnMode(View.VISIBLE);
         counters[currentImage]++;
@@ -165,7 +138,12 @@ public class CupsActivity extends AppCompatActivity {
         tv_display_amount[currentImage].setText(Integer.toString(counters[currentImage]));
         Button updateButton = findViewById(R.id.update_button);
         updateButton.setVisibility(View.VISIBLE);
-
+        int totalAmountChosen = 0; //todo: reuse of this value also in launch daily
+        for (int i = 0; i < counters.length; i++) {
+            totalAmountChosen += counters[i] * amounts[i];
+        }
+        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
+        totalAmountText.setText(String.format("Total Amount Chosen: %s ML", Integer.toString(totalAmountChosen)));
 
     }
 
@@ -178,7 +156,8 @@ public class CupsActivity extends AppCompatActivity {
         changeCleanAllBtnMode(View.INVISIBLE);
         Button updateButton = findViewById(R.id.update_button);
         updateButton.setVisibility(View.INVISIBLE);
-
+        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
+        totalAmountText.setText(String.format("Total Amount Chosen: 0 ML"));
     }
 
     public void launchDailyActivity(View view) {
@@ -187,7 +166,7 @@ public class CupsActivity extends AppCompatActivity {
             totalAmountChosen += counters[i] * amounts[i];
         }
 
-        Intent intent = new Intent(this, DailyActivity.class); //todo change this?
+        Intent intent = new Intent(this, DailyActivity.class);
         intent.putExtra(AMOUNT_OF_WATER, totalAmountChosen);
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }

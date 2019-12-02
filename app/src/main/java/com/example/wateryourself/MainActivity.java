@@ -7,8 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
+
 
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
@@ -18,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = reader.edit();
+//        final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+//        final SharedPreferences.Editor editor = reader.edit();
 //        editor.putBoolean("is_first", true);
 //        editor.commit();
         //Time to launch the another activity

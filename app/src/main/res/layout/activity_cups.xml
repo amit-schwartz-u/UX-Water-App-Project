@@ -49,7 +49,9 @@
         android:textSize="25sp"
         android:textStyle="bold"
         android:visibility="visible"
-        android:text="How much water did you drink?"/>
+        android:text="How much water did you drink now?"/>
+
+
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -68,7 +70,7 @@
     <!--        android:layout_marginTop="110dp"-->
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clean_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,17 +80,37 @@
         android:orientation="horizontal">
 
 
+        <TextView
+            android:id="@+id/tv_total_amount_chosen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/offerings"
+            android:text="Total Amount Chosen: 0 ML"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/clean_all_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:onClick="cleanAmountChosen"
-            android:text="Clean All">
+            android:text="Clean All"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         </Button>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/little_cups_display_layout"
