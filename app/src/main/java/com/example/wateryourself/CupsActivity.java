@@ -184,4 +184,9 @@ public class CupsActivity extends AppCompatActivity {
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }
