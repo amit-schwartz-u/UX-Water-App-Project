@@ -18,4 +18,9 @@ public class GardenActivity extends AppCompatActivity {
         Intent intent = new Intent(GardenActivity.this, DailyActivity.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
