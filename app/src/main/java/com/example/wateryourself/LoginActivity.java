@@ -126,5 +126,4 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra(MainActivity.FROM_MAIN, "LOGIN");
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
-
 }

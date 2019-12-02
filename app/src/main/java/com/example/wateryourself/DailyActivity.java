@@ -79,4 +79,9 @@ public class DailyActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GardenActivity.class);
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
