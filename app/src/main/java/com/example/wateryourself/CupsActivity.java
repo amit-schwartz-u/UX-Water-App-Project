@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -131,7 +133,18 @@ public class CupsActivity extends AppCompatActivity {
 
     public void addAmount(View view) {
         changeCleanAllBtnMode(View.VISIBLE);
-        counters[currentImage]++;
+
+        //prevent user from choosing more than 3 of each cup/bottle
+        if (counters[currentImage]==3){
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "That's too much! You can't pick more than 3",
+                    Toast.LENGTH_LONG);
+            toast.show();
+        }
+
+        else{
+            counters[currentImage]++;
+        }
         if (counters[currentImage] == 1) {
             littleImageViews[currentImage].setVisibility(View.VISIBLE);
         }

@@ -17,7 +17,6 @@
         android:layout_marginRight="8dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-
         app:srcCompat="@drawable/small_logo" />
 
     <TextView
@@ -27,7 +26,8 @@
         android:layout_alignTop="@id/viewPager"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
         android:textColor="#000000"
         android:textSize="28sp"
@@ -41,15 +41,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_hello_name"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/offerings"
-        android:layout_marginTop="10dp"
+        android:text="How much water did you drink now?"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#000000"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:visibility="visible"
-        android:text="How much water did you drink now?"/>
+        android:visibility="visible" />
 
 
 
@@ -85,7 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:fontFamily="@font/offerings"
             android:text="Total Amount Chosen: 0 ML"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
