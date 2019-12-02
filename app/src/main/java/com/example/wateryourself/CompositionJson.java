@@ -16,7 +16,7 @@ public class CompositionJson extends JSONObject{
 
         try {
             jsonAddUser.put("name", name);
-            jsonAddUser.put("age", age);
+            jsonAddUser.put("ageEditText", age);
             jsonAddUser.put("weight", weight);
             jsonAddUser.put("height", height);
             obj.put("curUser", jsonAddUser);
