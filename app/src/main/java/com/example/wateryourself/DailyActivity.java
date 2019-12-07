@@ -17,9 +17,6 @@ public class DailyActivity extends AppCompatActivity {
     private int curWaterAmount = 0;
     ConstraintLayout dailyConstraintLayout;
 
-    // Name of shared preferences file
-    private String waterYourselfFile =
-            "com.example.android.waterYourselfprefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +24,25 @@ public class DailyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daily);
         Intent intent = getIntent();
         setCurrentWaterAmount(intent);
-        if (curWaterAmount >= 2500) {
+        checkDailyGoalToast(); //todo rename
+        TextView textView = findViewById(R.id.tv_you_drank);
+        textView.setText(String.format("you drank: %s ML today !", curWaterAmount));
+        setActivityBackgroundImage();
+        setWelcomeByNameInTop();
+    }
+
+    private void checkDailyGoalToast() {
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+        Boolean isTodayFirstTimeToMeetGoal = reader.getBoolean("is_today_first_time_to_meet_daily_goal", false);
+        if (curWaterAmount >= 2500 && isTodayFirstTimeToMeetGoal) {
+            final SharedPreferences.Editor preferencesEditor = reader.edit();
+            preferencesEditor.putBoolean("is_today_first_time_to_meet_daily_goal", false);
+            preferencesEditor.apply();
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Great job! you have reached your daily goal! ",
                     Toast.LENGTH_LONG);
             toast.show();
         }
-        TextView textView = findViewById(R.id.tv_you_drank);
-        textView.setText(String.format("you drank: %s ML today !", curWaterAmount));
-        setActivityBackgroundImage();
-        setWelcomeByNameInTop();
     }
 
     private void setWelcomeByNameInTop() {
@@ -80,7 +86,7 @@ public class DailyActivity extends AppCompatActivity {
 
     private void setCurrentWaterAmount(Intent intent) {
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         curWaterAmount = reader.getInt(CUR_WATER_AMOUNT, 0);
         curWaterAmount += waterToAdd;
         final SharedPreferences.Editor preferencesEditor = reader.edit();

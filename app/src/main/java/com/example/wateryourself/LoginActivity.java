@@ -186,9 +186,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchCupsActivity() {
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
         preferencesEditor.putBoolean("is_first", false);
+        preferencesEditor.putBoolean("is_today_first_time_to_meet_daily_goal", true);
         preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
         preferencesEditor.apply();
         Intent intent = new Intent(this, CupsActivity.class);
