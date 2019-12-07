@@ -23,7 +23,6 @@
         android:id="@+id/tv_hello_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/viewPager"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="16dp"
@@ -60,29 +59,33 @@
         android:layout_below="@+id/tv_cups_instruction">
 
         <LinearLayout
+            android:id="@+id/first_row_cups_images_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/first_row_cups_images_layout"
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ib_cup200"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iv_cup200"
-                android:src="@drawable/cup200"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:onClick="addAmountOfWater"
+                android:src="@drawable/cup200">
 
-            </ImageView>
+            </ImageButton>
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ib_cup500"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iv_cup500"
-                android:src="@drawable/cup500"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:onClick="addAmountOfWater"
+                android:src="@drawable/cup500">
 
-            </ImageView>
+            </ImageButton>
         </LinearLayout>
 
         <LinearLayout
@@ -92,23 +95,28 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ib_bottle750"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iv_bottle750"
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:onClick="addAmountOfWater"
                 android:src="@drawable/bottle750"
-                android:layout_weight="1">
+                android:visibility="visible">
 
-            </ImageView>
+            </ImageButton>
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/ib_bottle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/iv_bottle1"
-                android:src="@drawable/bottle1"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:background="#00FFFFFF"
+                android:onClick="addAmountOfWater"
+                android:src="@drawable/bottle1">
 
-            </ImageView>
+            </ImageButton>
         </LinearLayout>
 
 
@@ -137,10 +145,11 @@
         android:id="@+id/clean_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/viewPager"
+        android:layout_below="@+id/cups_images_layout"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
 
         <TextView
@@ -176,127 +185,127 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/little_cups_display_layout"
-        android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_above="@id/update_button"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/little_cups_display_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="110dp"-->
+<!--        android:layout_above="@id/update_button"-->
+<!--        android:layout_alignParentStart="true"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:orientation="horizontal">-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1">-->
 
-            <ImageView
-                android:id="@+id/iv_littlecup200"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/little200">
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_littlecup200"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:src="@drawable/little200">-->
 
-            </ImageView>
+<!--            </ImageView>-->
 
-            <TextView
-                android:id="@+id/tv_count_200"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+<!--            <TextView-->
+<!--                android:id="@+id/tv_count_200"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
 
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:textSize="30sp">
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="30sp">-->
 
-            </TextView>
+<!--            </TextView>-->
 
-        </RelativeLayout>
+<!--        </RelativeLayout>-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1">-->
 
-            <ImageView
-                android:id="@+id/iv_littlecup500"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/little500">
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_littlecup500"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:src="@drawable/little500">-->
 
-            </ImageView>
+<!--            </ImageView>-->
 
-            <TextView
-                android:id="@+id/tv_count_500"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:textSize="30sp">
+<!--            <TextView-->
+<!--                android:id="@+id/tv_count_500"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="30sp">-->
 
-            </TextView>
-
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/iv_littlebottle750"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/little750">
-
-            </ImageView>
-
-            <TextView
-                android:id="@+id/tv_count_750"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:textSize="30sp">
-
-            </TextView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/iv_littlebottle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:src="@drawable/little1000">
+<!--            </TextView>-->
 
 
-            </ImageView>
+<!--        </RelativeLayout>-->
 
-            <TextView
-                android:id="@+id/tv_count_1000"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:textSize="30sp">
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1">-->
 
-            </TextView>
-        </RelativeLayout>
-    </LinearLayout>
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_littlebottle750"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:src="@drawable/little750">-->
+
+<!--            </ImageView>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_count_750"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="30sp">-->
+
+<!--            </TextView>-->
+<!--        </RelativeLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_littlebottle1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:src="@drawable/little1000">-->
+
+
+<!--            </ImageView>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_count_1000"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="30sp">-->
+
+<!--            </TextView>-->
+<!--        </RelativeLayout>-->
+<!--    </LinearLayout>-->
 
     <Button
         android:id="@+id/update_button"
