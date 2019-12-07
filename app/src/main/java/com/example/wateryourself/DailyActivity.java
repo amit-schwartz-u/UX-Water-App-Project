@@ -34,7 +34,7 @@ public class DailyActivity extends AppCompatActivity {
             toast.show();
         }
         TextView textView = findViewById(R.id.tv_you_drank);
-        textView.setText(String.format("you drank: %s ML today !", curWaterAmount));
+        textView.setText(String.format("You Drank: %s ML today !", curWaterAmount));
         setActivityBackgroundImage();
         setWelcomeByNameInTop();
     }
