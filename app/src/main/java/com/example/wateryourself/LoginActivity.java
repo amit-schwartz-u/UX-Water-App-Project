@@ -20,6 +20,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE
             = "com.example.android.WaterYourself.extra.MESSAGE";
+    // Name of shared preferences file
+    private String waterYourselfFile =
+            "com.example.android.waterYourselfprefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,10 +118,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void launchCupsActivity(View view) {
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_MULTI_PROCESS);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
-        preferencesEditor.putBoolean("is_first", false);
-        preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
+        preferencesEditor.putBoolean("is_first", false).putInt(CUR_WATER_AMOUNT, 0);
         preferencesEditor.apply();
         Intent intent = new Intent(this, CupsActivity.class);
         String name = mEnterNameEditText.getText().toString();

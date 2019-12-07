@@ -90,7 +90,7 @@ public class DailyActivity extends AppCompatActivity {
 
     private void setCurrentWaterAmount(Intent intent) {
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_MULTI_PROCESS);
         curWaterAmount = reader.getInt(CUR_WATER_AMOUNT, 0);
         curWaterAmount += waterToAdd;
         final SharedPreferences.Editor preferencesEditor = reader.edit();
