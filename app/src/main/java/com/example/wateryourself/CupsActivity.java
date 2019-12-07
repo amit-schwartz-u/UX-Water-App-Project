@@ -8,7 +8,6 @@ import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -52,7 +51,7 @@ public class CupsActivity extends AppCompatActivity {
         changeCleanAllBtnMode(View.INVISIBLE);
         Intent intent = getIntent();
         updateUserName(intent);
-        fillTextViewCountAmmount();
+        fillTextViewCountAmount();
         makeInvisibleIV();
 
         models = new ArrayList<>();
@@ -88,7 +87,7 @@ public class CupsActivity extends AppCompatActivity {
 
     }
 
-    private void fillTextViewCountAmmount() {
+    private void fillTextViewCountAmount() {
 
         tv_display_amount[0] = findViewById(R.id.tv_count_200);
 
@@ -135,14 +134,12 @@ public class CupsActivity extends AppCompatActivity {
         changeCleanAllBtnMode(View.VISIBLE);
 
         //prevent user from choosing more than 3 of each cup/bottle
-        if (counters[currentImage]==3){
+        if (counters[currentImage] == 3) {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "That's too much! You can't pick more than 3",
                     Toast.LENGTH_LONG);
             toast.show();
-        }
-
-        else{
+        } else {
             counters[currentImage]++;
         }
         if (counters[currentImage] == 1) {

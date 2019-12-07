@@ -10,16 +10,19 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText ageEditText;
-    EditText nameEditText;
-    EditText weightEditText;
+    private EditText ageEditText;
+    private EditText weightEditText;
     private EditText mEnterNameEditText;
     private static final String CUR_WATER_AMOUNT = "CURRENT WATER AMOUNT";
 
     public static final String EXTRA_MESSAGE
             = "com.example.android.WaterYourself.extra.MESSAGE";
+    private Boolean isUserNameValid;
+    private Boolean isUserAgeValid;
+    private Boolean isUserWeightValid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         validateUserInput();
         mEnterNameEditText = (EditText) findViewById(R.id.et_enter_name);
-
+        isUserNameValid = false;
+        isUserAgeValid = false;
+        isUserWeightValid = false;
     }
 
     private void validateUserInput() {
@@ -38,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validateName() {
-        nameEditText = (EditText) findViewById(R.id.et_enter_name);
-        nameEditText.addTextChangedListener(new TextWatcher() {
+        mEnterNameEditText = (EditText) findViewById(R.id.et_enter_name);
+        mEnterNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -47,15 +52,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (start >= 18) {
-                    nameEditText.setError("Maximum Limit Reached!");
-                }
-                if (nameEditText.getText().toString().length() == 0) {
-                    nameEditText.setError("name is required!");
+                    mEnterNameEditText.setError("Maximum Limit Reached!");
+                } else if (mEnterNameEditText.getText().toString().length() == 0) {
+                    mEnterNameEditText.setError("name is required!");
+                } else {
+                    isUserNameValid = true;
                 }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (mEnterNameEditText.getText().toString().length() == 0) {
+                    isUserNameValid = false;
+                }
             }
         });
     }
@@ -72,13 +81,35 @@ public class LoginActivity extends AppCompatActivity {
                 if (start >= 4) {
                     ageEditText.setError("Maximum Limit Reached!");
                 }
-                if (ageEditText.getText().toString().length() == 0) {
-                    ageEditText.setError("age is required!");
-                }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (ageEditText.getText().toString().length() != 0) {
+                    int curAge = Integer.parseInt(ageEditText.getText().toString());
+                    if (curAge <= 120 && curAge >= 6) {
+                        isUserAgeValid = true;
+                    }
+                }
+            }
+        });
+        ageEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    if (ageEditText.getText().toString().length() == 0) {
+                        ageEditText.setError("age is required!");
+                        return;
+                    }
+                    int curAge = Integer.parseInt(ageEditText.getText().toString());
+                    if (curAge > 120) {
+                        ageEditText.setError("age is to old!");
+                    } else if (curAge < 6) {
+                        ageEditText.setError("age is to young!");
+                    } else {
+                        isUserAgeValid = true;
+                    }
+                }
             }
         });
     }
@@ -95,26 +126,66 @@ public class LoginActivity extends AppCompatActivity {
                 if (start >= 10) {
                     weightEditText.setError("Maximum Limit Reached!");
                 }
-                if (weightEditText.getText().toString().length() == 0) {
-                    weightEditText.setError("weight is required!");
-                }
             }
+
             @Override
             public void afterTextChanged(Editable s) {
-
+                if (weightEditText.getText().toString().length() != 0) {
+                    int curWeight = Integer.parseInt(weightEditText.getText().toString());
+                    if (curWeight <= 150 && curWeight >= 6) {
+                        isUserWeightValid = true;
+                    }
+                }
+            }
+        });
+        weightEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    if (weightEditText.getText().toString().length() == 0) {
+                        weightEditText.setError("weight is required!");
+                        return;
+                    }
+                    int curWeight = Integer.parseInt(weightEditText.getText().toString());
+                    if (curWeight > 150) {
+                        weightEditText.setError("weight is too big!");
+                    } else if (curWeight < 6) {
+                        weightEditText.setError("weight is too low!");
+                    } else {
+                        isUserWeightValid = true;
+                    }
+                }
             }
         });
     }
+
     private void validateHeight() {
     }
-
 
 
     public void onRadioButtonClicked(View view) {
         //todo
     }
 
-    public void launchCupsActivity(View view) {
+    public void checkIfShouldLunchCupsActivity(View view) {
+        if (isUserInputValid()) {
+            launchCupsActivity();
+        } else { //todo put in place
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Invalid user input!",
+                    Toast.LENGTH_LONG);
+            toast.show();
+        }
+    }
+
+    public boolean isUserInputValid() {
+        if (isUserNameValid && isUserAgeValid && isUserWeightValid) {
+            return true;
+        }
+        return false;
+    }
+
+    public void launchCupsActivity() {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
         preferencesEditor.putBoolean("is_first", false);

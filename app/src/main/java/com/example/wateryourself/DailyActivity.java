@@ -27,7 +27,7 @@ public class DailyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daily);
         Intent intent = getIntent();
         setCurrentWaterAmount(intent);
-        if (curWaterAmount >= 2500){
+        if (curWaterAmount >= 2500) {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Great job! you have reached your daily goal! ",
                     Toast.LENGTH_LONG);
@@ -46,37 +46,27 @@ public class DailyActivity extends AppCompatActivity {
 
     private void setActivityBackgroundImage() {
         dailyConstraintLayout = findViewById(R.id.constraintLayout1); //todo make sure 250! not 200
-        if(curWaterAmount<250){ //todo try change to 1 line
+        if (curWaterAmount < 250) { //todo try change to 1 line
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_0);
-        }
-        else if(curWaterAmount<500){
+        } else if (curWaterAmount < 500) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_250);
-        }
-        else if(curWaterAmount<750){
+        } else if (curWaterAmount < 750) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_500);
-        }
-        else if(curWaterAmount<1000){
+        } else if (curWaterAmount < 1000) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_750);
-        }
-        else if(curWaterAmount<1250){
+        } else if (curWaterAmount < 1250) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_1000);
-        }
-        else if(curWaterAmount<1500){
+        } else if (curWaterAmount < 1500) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_1250);
-        }
-        else if(curWaterAmount<1750){
+        } else if (curWaterAmount < 1750) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_1500);
-        }
-        else if(curWaterAmount<2000){
+        } else if (curWaterAmount < 2000) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_1750);
-        }
-        else if(curWaterAmount<2250){
+        } else if (curWaterAmount < 2250) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_2000);
-        }
-        else if(curWaterAmount<2500){
+        } else if (curWaterAmount < 2500) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_2250);
-        }
-        else {
+        } else {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_2500);
         }
     }
