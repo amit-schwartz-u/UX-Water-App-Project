@@ -16,15 +16,11 @@ import android.widget.TextView;
 import java.util.Date;
 
 public class DailyActivity extends AppCompatActivity {
-    private static final String FROM_DAILY = "call from daily"; //todo use
-    private static final String CUR_WATER_AMOUNT = "CURRENT WATER AMOUNT";
+    private static final String FROM_DAILY = "call from daily";
     private static final String LAST_TIME_VISITED = "LAST TIME VISITED";
     private int curWaterAmount = 0;
     ConstraintLayout dailyConstraintLayout;
 
-    // Name of shared preferences file
-    private String waterYourselfFile =
-            "com.example.android.waterYourselfprefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +30,17 @@ public class DailyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
         ImageView rain = findViewById(R.id.im_rain);
-        if (waterToAdd != 0){
+        if (waterToAdd != 0) {
             ObjectAnimator animation = ObjectAnimator.ofFloat(rain, "translationY", 2000f);
             animation.setDuration(3000);
             animation.start();
-        }
-        else {
+        } else {
             rain.setVisibility(View.INVISIBLE);
         }
 
         setCurrentWaterAmount(intent);
 
-        if (curWaterAmount >= 2500){
+        if (curWaterAmount >= 2500) {
             TextView tv1 = findViewById(R.id.tv_congratulations1);
             TextView tv2 = findViewById(R.id.tv_congratulations2);
             tv1.setVisibility(View.VISIBLE);
@@ -58,8 +53,8 @@ public class DailyActivity extends AppCompatActivity {
     }
 
     private void setActivityBackgroundImage() {
-        dailyConstraintLayout = findViewById(R.id.constraintLayout1); //todo make sure 250! not 200
-        if (curWaterAmount < 250) { //todo try change to 1 line
+        dailyConstraintLayout = findViewById(R.id.constraintLayout1);
+        if (curWaterAmount < 250) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_0);
         } else if (curWaterAmount < 500) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_250);
@@ -93,11 +88,11 @@ public class DailyActivity extends AppCompatActivity {
 
     private void setCurrentWaterAmount(Intent intent) {
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
-        curWaterAmount = reader.getInt(CUR_WATER_AMOUNT, 0);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+        curWaterAmount = reader.getInt(MyPreferences.CUMULATIVE_WATER_AMOUNT, 0);
         curWaterAmount += waterToAdd;
         final SharedPreferences.Editor preferencesEditor = reader.edit();
-        preferencesEditor.putInt(CUR_WATER_AMOUNT, curWaterAmount);
+        preferencesEditor.putInt(MyPreferences.CUMULATIVE_WATER_AMOUNT, curWaterAmount);
         preferencesEditor.apply();
     }
 
@@ -111,15 +106,15 @@ public class DailyActivity extends AppCompatActivity {
     }
 
     private void resetPage() {
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
-        preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
+        preferencesEditor.putInt(MyPreferences.CUMULATIVE_WATER_AMOUNT, 0);
         preferencesEditor.apply();
         curWaterAmount = 0;
     }
 
     private void updateTodayDate() {
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
         Date d = new Date();
         final SharedPreferences.Editor preferencesEditor = reader.edit();
         preferencesEditor.putLong(LAST_TIME_VISITED, d.getTime());
@@ -127,7 +122,7 @@ public class DailyActivity extends AppCompatActivity {
     }
 
     private Date retrieveLastDay() {
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
         Date lastDay = new Date(reader.getLong(LAST_TIME_VISITED, 0));
         return lastDay;
     }
