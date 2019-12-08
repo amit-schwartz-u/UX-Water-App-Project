@@ -16,11 +16,8 @@ import android.widget.TextView;
 import java.util.Date;
 
 public class DailyActivity extends AppCompatActivity {
-    private static final String FROM_DAILY = "call from daily";
-    private static final String LAST_TIME_VISITED = "LAST TIME VISITED";
+    private static final String LAST_TIME_VISITED = "last time visited";
     private int curWaterAmount = 0;
-    ConstraintLayout dailyConstraintLayout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +27,7 @@ public class DailyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
         ImageView rain = findViewById(R.id.im_rain);
-        if (waterToAdd != 0) {
+        if (waterToAdd != 0) { //enables rain animation if user enters an amount of water
             ObjectAnimator animation = ObjectAnimator.ofFloat(rain, "translationY", 2000f);
             animation.setDuration(3000);
             animation.start();
@@ -40,7 +37,7 @@ public class DailyActivity extends AppCompatActivity {
 
         setCurrentWaterAmount(intent);
 
-        if (curWaterAmount >= 2500) {
+        if (curWaterAmount >= 2500) { //makes congratulation text visible when goal reached
             TextView tv1 = findViewById(R.id.tv_congratulations1);
             TextView tv2 = findViewById(R.id.tv_congratulations2);
             tv1.setVisibility(View.VISIBLE);
@@ -52,8 +49,12 @@ public class DailyActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * this method is responsible for updating the background image of the activity according to the
+     * growth of the plant. (the plant is growing as the user is drinking more)
+     */
     private void setActivityBackgroundImage() {
-        dailyConstraintLayout = findViewById(R.id.constraintLayout1);
+        ConstraintLayout dailyConstraintLayout = findViewById(R.id.constraintLayout1);
         if (curWaterAmount < 250) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_0);
         } else if (curWaterAmount < 500) {
@@ -79,15 +80,21 @@ public class DailyActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * going back to cups activity when user wants to drink more
+     */
     public void launchCupsActivityAgain(View view) {
         Intent intent = new Intent(this, CupsActivity.class);
-        intent.putExtra(MainActivity.FROM_MAIN, "Daily");
+        intent.putExtra(MainActivity.FROM, "Daily");
         startActivity(intent);
     }
 
-
+    /**
+     * updating the cumulative water amount after user added more water.
+     * the updated data is saved to preferences in order to keep the app's state.
+     */
     private void setCurrentWaterAmount(Intent intent) {
-        int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
+        int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0); // amount chosen from cups activity
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         curWaterAmount = reader.getInt(MyPreferences.CUMULATIVE_WATER_AMOUNT, 0);
         curWaterAmount += waterToAdd;
@@ -96,15 +103,19 @@ public class DailyActivity extends AppCompatActivity {
         preferencesEditor.apply();
     }
 
+    /**
+     * this method checks if the current date and the last date of visiting the app is different
+     */
     private void HandleDifferentDays() {
-
         if (!(isTheSameDay(retrieveLastDay()))) {
             resetPage();
         }
         updateTodayDate();
-
     }
 
+    /**
+     * this method resets the data saved in app when reaching midnight
+     */
     private void resetPage() {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
@@ -113,6 +124,9 @@ public class DailyActivity extends AppCompatActivity {
         curWaterAmount = 0;
     }
 
+    /**
+     * updating current date to preferences
+     */
     private void updateTodayDate() {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
         Date d = new Date();
@@ -121,16 +135,27 @@ public class DailyActivity extends AppCompatActivity {
         preferencesEditor.apply();
     }
 
+    /**
+     * extracts the last date of visit
+     */
     private Date retrieveLastDay() {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
         Date lastDay = new Date(reader.getLong(LAST_TIME_VISITED, 0));
         return lastDay;
     }
 
+    /**
+     * is current date equals the last day of visit?
+     * @param lastDate
+     * @return true if equals, false otherwise
+     */
     private boolean isTheSameDay(Date lastDate) {
         return DateUtils.isToday(lastDate.getTime());
     }
 
+    /**
+     * moving to garden activity in order to see all grown plants
+     */
     public void goToGardenActivity(View view) {
         Intent intent = new Intent(this, GardenActivity.class);
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
