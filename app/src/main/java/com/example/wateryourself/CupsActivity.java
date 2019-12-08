@@ -104,7 +104,7 @@ public class CupsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
+        finishAffinity();
     }
 
     public void addAmountOfWater(View view) {
