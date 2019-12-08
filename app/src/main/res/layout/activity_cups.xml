@@ -73,7 +73,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                android:onClick="addAmountOfWater"
+                android:onClick="selectAmountOfWater"
                 android:scaleType="fitEnd"
                 android:src="@drawable/cup200">
 
@@ -87,7 +87,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                android:onClick="addAmountOfWater"
+                android:onClick="selectAmountOfWater"
                 android:scaleType="fitEnd"
                 android:src="@drawable/cup500">
 
@@ -110,7 +110,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
-                android:onClick="addAmountOfWater"
+                android:onClick="selectAmountOfWater"
                 android:scaleType="fitStart"
                 android:src="@drawable/bottle750"
                 android:visibility="visible">
@@ -125,7 +125,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@color/cardview_shadow_end_color"
-                android:onClick="addAmountOfWater"
+                android:onClick="selectAmountOfWater"
                 android:scaleType="fitStart"
                 android:src="@drawable/bottle1">
 
