@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final int MINIMUM_WEIGHT = 6;
     private static final int MAXIMUM_HEIGHT = 250;
     private static final int MINIMUM_HEIGHT = 50;
-    private static final int MAXIMUM_LENGTH = 10;
+    private static final int MAXIMUM_LENGTH = 4;
     private static final int MAXIMUM_AGE = 120;
     private static final int MINIMUM_AGE = 6;
     private static final int NAME_MAXIMUM_LENGTH = 18;
@@ -96,11 +96,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 isUserAgeValid = false;
-                if (start >= 4) {
+                int inputLength = ageEditText.getText().toString().length();
+                if (inputLength >= MAXIMUM_LENGTH) {
                     ageEditText.setError("Maximum Limit Reached!");
                     return;
                 }
-                if (ageEditText.getText().toString().length() != 0) {
+                if (inputLength != 0) {
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
                     if (curAge <= MAXIMUM_AGE && curAge >= MINIMUM_AGE) {
                         isUserAgeValid = true;
@@ -117,8 +118,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (ageEditText.getText().toString().length() == 0) {
+                    int inputLength = ageEditText.getText().toString().length();
+                    if (inputLength == 0) {
                         ageEditText.setError("age is required!");
+                        return;
+                    }
+                    if (inputLength > MAXIMUM_LENGTH) {
+                        ageEditText.setError("Maximum Limit Reached!");
                         return;
                     }
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
@@ -144,11 +150,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 isUserWeightValid = false;
-                if (start >= 10) {
+                int inputLength = weightEditText.getText().toString().length();
+                if (inputLength >= MAXIMUM_LENGTH) {
                     weightEditText.setError("Maximum Limit Reached!");
                     return;
                 }
-                if (weightEditText.getText().toString().length() != 0) {
+                if (inputLength != 0) {
                     int curWeight = Integer.parseInt(weightEditText.getText().toString());
                     if (curWeight <= MAXIMUM_WEIGHT && curWeight >= MINIMUM_WEIGHT) {
                         isUserWeightValid = true;
@@ -158,19 +165,23 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         weightEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (weightEditText.getText().toString().length() == 0) {
+                    int inputLength = weightEditText.getText().toString().length();
+                    if (inputLength == 0) {
                         weightEditText.setError("weight is required!");
                         return;
                     }
+                    if (inputLength > MAXIMUM_LENGTH) {
+                        weightEditText.setError("Maximum Limit Reached!");
+                        return;
+                    }
                     int curWeight = Integer.parseInt(weightEditText.getText().toString());
-                    if (curWeight > LoginActivity.MAXIMUM_WEIGHT) {
+                    if (curWeight > MAXIMUM_WEIGHT) {
                         weightEditText.setError("weight is too big!");
                     } else if (curWeight < MINIMUM_WEIGHT) {
                         weightEditText.setError("weight is too low!");
@@ -192,11 +203,12 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 isUserHeightValid = false;
-                if (start >= MAXIMUM_LENGTH) {
+                int inputLength = heightEditText.getText().toString().length();
+                if (inputLength >= MAXIMUM_LENGTH) {
                     heightEditText.setError("Maximum Limit Reached!");
                     return;
                 }
-                if (heightEditText.getText().toString().length() != 0) {
+                if (inputLength != 0) {
                     int curHeight = Integer.parseInt(heightEditText.getText().toString());
                     if (curHeight <= MAXIMUM_HEIGHT && curHeight >= MINIMUM_HEIGHT) {
                         isUserHeightValid = true;
@@ -206,21 +218,25 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         heightEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
-                    if (heightEditText.getText().toString().length() == 0) {
+                    int inputLength = heightEditText.getText().toString().length();
+                    if (inputLength == 0) {
                         heightEditText.setError("height is required!");
                         return;
                     }
-                    int curWeight = Integer.parseInt(heightEditText.getText().toString());
-                    if (curWeight > MAXIMUM_HEIGHT) {
+                    if (inputLength > MAXIMUM_LENGTH) {
+                        heightEditText.setError("Maximum Limit Reached!");
+                        return;
+                    }
+                    int curHeight = Integer.parseInt(heightEditText.getText().toString());
+                    if (curHeight > MAXIMUM_HEIGHT) {
                         heightEditText.setError("max height is 250!");
-                    } else if (curWeight < MINIMUM_HEIGHT) {
+                    } else if (curHeight < MINIMUM_HEIGHT) {
                         heightEditText.setError("minimum height is 50!");
                     } else {
                         isUserWeightValid = true;
