@@ -53,7 +53,7 @@
     <LinearLayout
         android:id="@+id/cups_images_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="480dp"
         android:layout_below="@+id/tv_cups_instruction"
         android:orientation="vertical">
 
@@ -135,27 +135,8 @@
 
     </LinearLayout>
 
-
-
-<!--    <androidx.viewpager.widget.ViewPager-->
-<!--        android:id="@+id/viewPager"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_above="@id/little_cups_display_layout"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:clipToPadding="false"-->
-<!--        android:foregroundGravity="bottom|center_horizontal"-->
-<!--        android:overScrollMode="never">-->
-
-<!--    </androidx.viewpager.widget.ViewPager>-->
-<!--    &lt;!&ndash;        android:layout_marginStart="38dp"&ndash;&gt;-->
-<!--    &lt;!&ndash;        android:layout_marginLeft="38dp"&ndash;&gt;-->
-<!--    &lt;!&ndash;        android:layout_marginTop="110dp"&ndash;&gt;-->
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clean_button_layout"
+        android:id="@+id/skip_to_plant_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cups_images_layout"
@@ -164,161 +145,24 @@
         android:orientation="horizontal"
         >
 
-
-        <TextView
-            android:id="@+id/tv_total_amount_chosen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="16dp"
-            android:text="Amount Chosen: 0 ML"
-            android:fontFamily="@font/comfortaa"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <Button
-            android:id="@+id/clean_all_btn"
+            android:id="@+id/skip_to_my_plant_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_corners"
             android:gravity="center"
-            android:onClick="cleanAmountChosen"
-            android:text="@string/bt_clean_all"
+            android:onClick="skipToPlant"
+            android:text="@string/skip_to_my_plant"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/rounded_corners"
             app:layout_constraintTop_toTopOf="parent">
 
         </Button>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/little_cups_display_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="110dp"-->
-<!--        android:layout_above="@id/update_button"-->
-<!--        android:layout_alignParentStart="true"-->
-<!--        android:layout_alignParentLeft="true"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/iv_littlecup200"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:src="@drawable/little200">-->
-
-<!--            </ImageView>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_count_200"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:gravity="center"-->
-<!--                android:textSize="30sp">-->
-
-<!--            </TextView>-->
-
-<!--        </RelativeLayout>-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/iv_littlecup500"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:src="@drawable/little500">-->
-
-<!--            </ImageView>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_count_500"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:gravity="center"-->
-<!--                android:textSize="30sp">-->
-
-<!--            </TextView>-->
-
-
-<!--        </RelativeLayout>-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/iv_littlebottle750"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:src="@drawable/little750">-->
-
-<!--            </ImageView>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_count_750"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:gravity="center"-->
-<!--                android:textSize="30sp">-->
-
-<!--            </TextView>-->
-<!--        </RelativeLayout>-->
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_weight="1">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/iv_littlebottle1"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerHorizontal="true"-->
-<!--                android:layout_alignParentBottom="true"-->
-<!--                android:src="@drawable/little1000">-->
-
-
-<!--            </ImageView>-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_count_1000"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_centerInParent="true"-->
-<!--                android:gravity="center"-->
-<!--                android:textSize="30sp">-->
-
-<!--            </TextView>-->
-<!--        </RelativeLayout>-->
-<!--    </LinearLayout>-->
 
     <Button
         android:id="@+id/update_button"
@@ -326,9 +170,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_corners"
         android:ellipsize="marquee"
         android:onClick="launchDailyActivity"
         android:text="@string/bt_update"
-        android:background="@drawable/rounded_corners"
         android:textSize="18sp" />
 </RelativeLayout>
