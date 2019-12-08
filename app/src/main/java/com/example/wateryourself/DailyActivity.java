@@ -30,7 +30,7 @@ public class DailyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
         ImageView rain = findViewById(R.id.im_rain);
-        if (waterToAdd != 0) {
+        if (waterToAdd != 0) { //enables rain animation if user enters an amount of water
             ObjectAnimator animation = ObjectAnimator.ofFloat(rain, "translationY", 2000f);
             animation.setDuration(3000);
             animation.start();
@@ -40,7 +40,7 @@ public class DailyActivity extends AppCompatActivity {
 
         setCurrentWaterAmount(intent);
 
-        if (curWaterAmount >= 2500) {
+        if (curWaterAmount >= 2500) { //makes congratulation text visible when goal reached
             TextView tv1 = findViewById(R.id.tv_congratulations1);
             TextView tv2 = findViewById(R.id.tv_congratulations2);
             tv1.setVisibility(View.VISIBLE);

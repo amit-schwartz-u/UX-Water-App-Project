@@ -78,7 +78,6 @@ public class CupsActivity extends AppCompatActivity {
     private void updateUserName(Intent intent) {
         if (intent.getStringExtra(MainActivity.FROM).equals(LoginActivity.LOGIN_SRC)) {
             mName = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
-
             final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             final SharedPreferences.Editor preferencesEditor = reader.edit();
             preferencesEditor.putString(NAME_STR, mName);
@@ -123,7 +122,7 @@ public class CupsActivity extends AppCompatActivity {
 
     @Override
     /**
-     * Disables the phone's back button to prevent use of it while in the app
+     * Exits the app
      */
     public void onBackPressed() {
         finishAffinity();
