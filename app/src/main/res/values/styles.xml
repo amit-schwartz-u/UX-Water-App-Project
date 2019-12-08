@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="colorControlNormal">#000000</item>//black color
+        <item name="colorControlActivated">@android:color/holo_orange_light</item>
+        <item name="colorControlHighlight">#000000</item>
     </style>
+
 
 </resources>

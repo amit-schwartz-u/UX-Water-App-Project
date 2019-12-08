@@ -22,17 +22,11 @@ public class CupsActivity extends AppCompatActivity {
     static String mName;
     int amountChosen=0;
     int[] amounts = {200, 500, 750, 1000};
-
     Button mUpdateButton;
     Button mSkipButton;
 
     // Shared preferences object
     private SharedPreferences mPreferences;
-
-    // Name of shared preferences file
-    private String waterYourselfFile =
-            "com.example.android.waterYourselfprefs";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +43,10 @@ public class CupsActivity extends AppCompatActivity {
 
     }
     private void fillImageButtonsAmountOfWater() {
-
         imagesAmountOfWater[0] = findViewById(R.id.ib_cup200);
         imagesAmountOfWater[1] = findViewById(R.id.ib_cup500);
         imagesAmountOfWater[2] = findViewById(R.id.ib_bottle750);
         imagesAmountOfWater[3] = findViewById(R.id.ib_bottle1);
-
     }
 
     private void fillImagesId() {
@@ -72,19 +64,19 @@ public class CupsActivity extends AppCompatActivity {
 
 
     private void updateUserName(Intent intent) {
-        if (intent.getStringExtra(MainActivity.FROM_MAIN).equals("LOGIN")) {
+        if (intent.getStringExtra(MainActivity.FROM).equals("LOGIN")) {
             mName = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
 
-            final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+            final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             final SharedPreferences.Editor preferencesEditor = reader.edit();
             preferencesEditor.putString(NAME_STR, mName);
             preferencesEditor.apply();
         } else {
-            mPreferences = getSharedPreferences(waterYourselfFile, MODE_PRIVATE);
+            mPreferences = getSharedPreferences("myPreferences", MODE_PRIVATE);
             mName = mPreferences.getString(NAME_STR, mName);
         }
         TextView textView = findViewById(R.id.tv_hello_name);
-        textView.setText(String.format("Hi %s !", mName));
+        textView.setText(String.format("Hi %s!", mName));
     }
 
     private void changeBtnMode(Button btn,int mode) {
