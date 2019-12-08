@@ -14,12 +14,19 @@ public class GardenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_garden);
     }
 
+    /**
+     * Returns to the Daily activity page when the button is clicked
+     * @param view
+     */
     public void backToDailyActivity(View view) {
         Intent intent = new Intent(GardenActivity.this, DailyActivity.class);
         startActivity(intent);
     }
 
     @Override
+    /**
+     * Disables the phone's back button to prevent its use in this activity of the app
+     */
     public void onBackPressed() {
 
     }
