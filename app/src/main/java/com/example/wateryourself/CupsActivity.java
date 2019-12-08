@@ -24,8 +24,8 @@ public class CupsActivity extends AppCompatActivity {
     int amountChosen=0;
     int[] amounts = {200, 500, 750, 1000};
 
-    Button mUpdtaeButton;
-    Button mCleanAllButton;
+    Button mUpdateButton;
+    Button mSkipButton;
 
     // Shared preferences object
     private SharedPreferences mPreferences;
@@ -43,10 +43,10 @@ public class CupsActivity extends AppCompatActivity {
         fillImagesId();
         Intent intent = getIntent();
         updateUserName(intent);
-        mUpdtaeButton =  findViewById(R.id.update_button);
-        mCleanAllButton = findViewById(R.id.clean_all_btn);
-        changeBtnMode(mUpdtaeButton,View.INVISIBLE);
-        changeBtnMode(mCleanAllButton,View.INVISIBLE);
+        mUpdateButton =  findViewById(R.id.update_button);
+        mSkipButton = findViewById(R.id.skip_to_my_plant_btn);
+        changeBtnMode(mUpdateButton,View.INVISIBLE);
+        changeBtnMode(mSkipButton,View.VISIBLE);
 
     }
     private void fillImageButtonsAmountOfWater() {
@@ -92,16 +92,11 @@ public class CupsActivity extends AppCompatActivity {
         btn.setVisibility(mode);
     }
 
-
-    public void cleanAmountChosen(View view) {
-        changeBtnMode(mCleanAllButton,View.INVISIBLE);
-        changeBtnMode(mUpdtaeButton,View.INVISIBLE);
-        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
-        totalAmountText.setText(String.format("Amount Chosen: 0 ML"));
+    public void skipToPlant(View view) {
+        launchDailyActivity(view);
     }
 
     public void launchDailyActivity(View view) {
-
 
         Intent intent = new Intent(this, DailyActivity.class);
         intent.putExtra(AMOUNT_OF_WATER, amountChosen);
@@ -126,10 +121,9 @@ public class CupsActivity extends AppCompatActivity {
                 imagesAmountOfWater[i].setImageDrawable(getResources().getDrawable(unpickedAmmountImg[i]));
             }
         }
-        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
-        totalAmountText.setText(String.format("Amount Chosen: %s ML", Integer.toString(amountChosen)));
-        changeBtnMode(mCleanAllButton,View.VISIBLE);
-        changeBtnMode(mUpdtaeButton,View.VISIBLE);
+        changeBtnMode(mSkipButton,View.INVISIBLE);
+        changeBtnMode(mUpdateButton,View.VISIBLE);
+
 
     }
 }
