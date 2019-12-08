@@ -29,6 +29,7 @@ public class CupsActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
@@ -42,6 +43,10 @@ public class CupsActivity extends AppCompatActivity {
         changeBtnMode(mSkipButton,View.VISIBLE);
 
     }
+
+    /**
+     * Enables quick find-view-by-id of the image buttons from the xml file
+     */
     private void fillImageButtonsAmountOfWater() {
         imagesAmountOfWater[0] = findViewById(R.id.ib_cup200);
         imagesAmountOfWater[1] = findViewById(R.id.ib_cup500);
@@ -49,6 +54,9 @@ public class CupsActivity extends AppCompatActivity {
         imagesAmountOfWater[3] = findViewById(R.id.ib_bottle1);
     }
 
+    /**
+     * Enables quick find-img-by-id of the image buttons from the drawbles
+     */
     private void fillImagesId() {
         pickedAmmountImg[0] = R.drawable.chosen_cup200;
         pickedAmmountImg[1] = R.drawable.chosen_cup500;
@@ -62,9 +70,13 @@ public class CupsActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * The function displays the user's name (from which it got from the previous activity) in this
+     * activity
+     * @param intent
+     */
     private void updateUserName(Intent intent) {
-        if (intent.getStringExtra(MainActivity.FROM).equals("LOGIN")) {
+        if (intent.getStringExtra(MainActivity.FROM).equals(LoginActivity.LOGIN_SRC)) {
             mName = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
 
             final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
@@ -79,14 +91,29 @@ public class CupsActivity extends AppCompatActivity {
         textView.setText(String.format("Hi %s!", mName));
     }
 
+    /**
+     * Changes the visibility mode of the given button
+     * @param btn the button who's mode to be changed
+     * @param mode the mode to change to
+     */
     private void changeBtnMode(Button btn,int mode) {
         btn.setVisibility(mode);
     }
 
+    /**
+     * This function is activated when the "skip to my plant" button is called. It calls the Daily
+     * activity launcher function and by that the user is able to skip the option of picking an
+     * amount of water if he just wants to see his progress.
+     * @param view
+     */
     public void skipToPlant(View view) {
         launchDailyActivity(view);
     }
 
+    /**
+     * Launches the next activity, sends to it the amount of water chosen by the user.
+     * @param view
+     */
     public void launchDailyActivity(View view) {
 
         Intent intent = new Intent(this, DailyActivity.class);
@@ -95,11 +122,19 @@ public class CupsActivity extends AppCompatActivity {
     }
 
     @Override
+    /**
+     * Disables the phone's back button to prevent use of it while in the app
+     */
     public void onBackPressed() {
         finishAffinity();
     }
 
-    public void addAmountOfWater(View view) {
+    /**
+     * The function is called when any one of the image buttons are pressed.
+     * The function presents the image button that was chosen.
+     * @param view the image button that was pressed
+     */
+    public void selectAmountOfWater(View view) {
         ImageButton amountChosenImg = (ImageButton)view;
 
         for (int i =0;i<imagesAmountOfWater.length;i++){

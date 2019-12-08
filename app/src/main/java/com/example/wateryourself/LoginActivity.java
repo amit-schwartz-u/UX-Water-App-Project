@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final int MAXIMUM_AGE = 120;
     private static final int MINIMUM_AGE = 6;
     private static final int NAME_MAXIMUM_LENGTH = 18;
+    public static final String LOGIN_SRC = "LOGIN";
     private EditText ageEditText;
     private EditText weightEditText;
     private EditText mEnterNameEditText;
@@ -272,7 +273,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CupsActivity.class);
         String name = mEnterNameEditText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, name);
-        intent.putExtra(MainActivity.FROM, "LOGIN");
+        intent.putExtra(MainActivity.FROM, LOGIN_SRC);
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 }
