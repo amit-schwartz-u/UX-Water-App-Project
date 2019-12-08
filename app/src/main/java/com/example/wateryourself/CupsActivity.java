@@ -17,24 +17,15 @@ public class CupsActivity extends AppCompatActivity {
 
     public static final String NAME_STR = "STRING OF USERNAME";
     public static final String AMOUNT_OF_WATER = "Amount Of Water";
-//    ViewPager viewPager;
-//    Adapter adapter;
-//    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
-//    List<Model> models;
     ImageButton[] imagesAmountOfWater = new ImageButton[4];
     int[] pickedAmmountImg = new int[4];
     int[] unpickedAmmountImg = new int[4];
-
-    //    ImageView[] littleImageViews = new ImageView[4];
     static String mName;
     int amountChosen=0;
-//    int currentImage = 0;
-//    int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
 
     Button mUpdtaeButton;
     Button mCleanAllButton;
-//    TextView[] tv_display_amount = new TextView[4];
 
     // Shared preferences object
     private SharedPreferences mPreferences;
@@ -64,7 +55,7 @@ public class CupsActivity extends AppCompatActivity {
         imagesAmountOfWater[1] = findViewById(R.id.ib_cup500);
         imagesAmountOfWater[2] = findViewById(R.id.ib_bottle750);
         imagesAmountOfWater[3] = findViewById(R.id.ib_bottle1);
-        
+
     }
 
     private void fillImagesId() {
@@ -77,8 +68,6 @@ public class CupsActivity extends AppCompatActivity {
         unpickedAmmountImg[1] = R.drawable.cup500;
         unpickedAmmountImg[2] = R.drawable.bottle750;
         unpickedAmmountImg[3] = R.drawable.bottle1;
-
-
 
     }
 
@@ -103,51 +92,8 @@ public class CupsActivity extends AppCompatActivity {
         btn.setVisibility(mode);
     }
 
-//    private void makeInvisibleIV() {
-//        littleImageViews[0] = (ImageView) findViewById(R.id.iv_littlecup200);
-//        littleImageViews[1] = (ImageView) findViewById(R.id.iv_littlecup500);
-//        littleImageViews[2] = (ImageView) findViewById(R.id.iv_littlebottle750);
-//        littleImageViews[3] = (ImageView) findViewById(R.id.iv_littlebottle1);
-//        for (int i = 0; i < littleImageViews.length; i++) {
-//            littleImageViews[i].setVisibility(View.INVISIBLE);
-//        }
-//    }
-//
-//    public void addAmount(View view) {
-//        changeBtnMode(View.VISIBLE);
-//
-//        //prevent user from choosing more than 3 of each cup/bottle
-//        if (counters[currentImage]==3){
-//            Toast toast = Toast.makeText(getApplicationContext(),
-//                    "That's too much! You can't pick more than 3",
-//                    Toast.LENGTH_LONG);
-//            toast.show();
-//        }
-//
-//        else{
-//            counters[currentImage]++;
-//        }
-//        if (counters[currentImage] == 1) {
-//            littleImageViews[currentImage].setVisibility(View.VISIBLE);
-//        }
-//        tv_display_amount[currentImage].setText(Integer.toString(counters[currentImage]));
-//        Button updateButton = findViewById(R.id.update_button);
-//        updateButton.setVisibility(View.VISIBLE);
-//        int totalAmountChosen = 0; //todo: reuse of this value also in launch daily
-//        for (int i = 0; i < counters.length; i++) {
-//            totalAmountChosen += counters[i] * amounts[i];
-//        }
-//        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
-//        totalAmountText.setText(String.format("Total Amount Chosen: %s ML", Integer.toString(totalAmountChosen)));
-//
-//    }
 
     public void cleanAmountChosen(View view) {
-//        for (int i = 0; i < counters.length; i++) {
-//            counters[i] = 0;
-//            littleImageViews[i].setVisibility(View.INVISIBLE);
-//            tv_display_amount[i].setText("");
-//        }
         changeBtnMode(mCleanAllButton,View.INVISIBLE);
         changeBtnMode(mUpdtaeButton,View.INVISIBLE);
         TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
@@ -184,7 +130,6 @@ public class CupsActivity extends AppCompatActivity {
         totalAmountText.setText(String.format("Amount Chosen: %s ML", Integer.toString(amountChosen)));
         changeBtnMode(mCleanAllButton,View.VISIBLE);
         changeBtnMode(mUpdtaeButton,View.VISIBLE);
-
 
     }
 }
