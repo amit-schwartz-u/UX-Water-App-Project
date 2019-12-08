@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-//todo: write total amount when choosing cups of water on third page
 
 public class CupsActivity extends AppCompatActivity {
 
@@ -123,7 +122,6 @@ public class CupsActivity extends AppCompatActivity {
         }
         changeBtnMode(mSkipButton,View.INVISIBLE);
         changeBtnMode(mUpdateButton,View.VISIBLE);
-
 
     }
 }

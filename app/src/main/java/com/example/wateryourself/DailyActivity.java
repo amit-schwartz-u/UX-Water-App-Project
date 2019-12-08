@@ -28,10 +28,10 @@ public class DailyActivity extends AppCompatActivity {
         Intent intent = getIntent();
         setCurrentWaterAmount(intent);
         if (curWaterAmount >= 2500){
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Great job! you have reached your daily goal! ",
-                    Toast.LENGTH_LONG);
-            toast.show();
+            TextView tv1 = findViewById(R.id.tv_congratulations1);
+            TextView tv2 = findViewById(R.id.tv_congratulations2);
+            tv1.setVisibility(View.VISIBLE);
+            tv2.setVisibility(View.VISIBLE);
         }
         TextView textView = findViewById(R.id.tv_you_drank);
         textView.setText(String.format("You Drank: %s ML today !", curWaterAmount));
