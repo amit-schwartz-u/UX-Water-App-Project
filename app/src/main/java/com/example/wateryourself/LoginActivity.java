@@ -1,6 +1,7 @@
 package com.example.wateryourself;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isUserNameValid = false;
                 if (start >= NAME_MAXIMUM_LENGTH) {
                     mEnterNameEditText.setError("Maximum Limit Reached!");
                 } else if (mEnterNameEditText.getText().toString().length() == 0) {
@@ -91,13 +93,21 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isUserAgeValid = false;
                 if (start >= 4) {
                     ageEditText.setError("Maximum Limit Reached!");
+                }
+                if (ageEditText.getText().toString().length() != 0) {
+                    int curAge = Integer.parseInt(ageEditText.getText().toString());
+                    if (curAge <= MAXIMUM_AGE && curAge >= MINIMUM_AGE) {
+                        isUserAgeValid = true;
+                    }
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                isUserAgeValid = false;
                 if (ageEditText.getText().toString().length() != 0) {
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
                     if (curAge <= MAXIMUM_AGE && curAge >= MINIMUM_AGE) {
@@ -136,13 +146,21 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isUserWeightValid = false;
                 if (start >= 10) {
                     weightEditText.setError("Maximum Limit Reached!");
+                }
+                if (weightEditText.getText().toString().length() != 0) {
+                    int curWeight = Integer.parseInt(weightEditText.getText().toString());
+                    if (curWeight <= MAXIMUM_WEIGHT && curWeight >= MINIMUM_WEIGHT) {
+                        isUserWeightValid = true;
+                    }
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                isUserWeightValid = false;
                 if (weightEditText.getText().toString().length() != 0) {
                     int curWeight = Integer.parseInt(weightEditText.getText().toString());
                     if (curWeight <= MAXIMUM_WEIGHT && curWeight >= MINIMUM_WEIGHT) {
@@ -181,13 +199,21 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isUserHeightValid = false;
                 if (start >= MAXIMUM_LENGTH) {
                     heightEditText.setError("Maximum Limit Reached!");
+                }
+                if (heightEditText.getText().toString().length() != 0) {
+                    int curHeight = Integer.parseInt(heightEditText.getText().toString());
+                    if (curHeight <= MAXIMUM_HEIGHT && curHeight >= MINIMUM_HEIGHT) {
+                        isUserHeightValid = true;
+                    }
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                isUserHeightValid = false;
                 if (heightEditText.getText().toString().length() != 0) {
                     int curHeight = Integer.parseInt(heightEditText.getText().toString());
                     if (curHeight <= MAXIMUM_HEIGHT && curHeight >= MINIMUM_HEIGHT) {
@@ -222,9 +248,9 @@ public class LoginActivity extends AppCompatActivity {
             launchCupsActivity();
         } else {
             Toast myToast = Toast.makeText(this, "please fill all fields", Toast.LENGTH_LONG);
-            myToast.setGravity(Gravity.TOP|Gravity.LEFT, 300, 300);
-            ViewGroup toastView = (ViewGroup)myToast.getView();
-            TextView tv = (TextView)toastView.getChildAt(0);
+            myToast.setGravity(Gravity.TOP | Gravity.LEFT, 300, 300);
+            ViewGroup toastView = (ViewGroup) myToast.getView();
+            TextView tv = (TextView) toastView.getChildAt(0);
             tv.setTextSize(18);
             myToast.show();
         }
