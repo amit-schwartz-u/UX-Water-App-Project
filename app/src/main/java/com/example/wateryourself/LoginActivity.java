@@ -246,7 +246,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CupsActivity.class);
         String name = mEnterNameEditText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, name);
-        intent.putExtra(MainActivity.FROM_MAIN, "LOGIN");
+        intent.putExtra(MainActivity.FROM, "LOGIN");
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 }
