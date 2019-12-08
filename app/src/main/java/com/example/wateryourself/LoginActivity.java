@@ -8,14 +8,26 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final int MAXIMUM_WEIGHT = 200;
+    private static final int MINIMUM_WEIGHT = 6;
+    private static final int MAXIMUM_HEIGHT = 250;
+    private static final int MINIMUM_HEIGHT = 50;
+    private static final int MAXIMUM_LENGTH = 10;
+    private static final int MAXIMUM_AGE = 120;
+    private static final int MINIMUM_AGE = 6;
+    private static final int NAME_MAXIMUM_LENGTH = 18;
     private EditText ageEditText;
     private EditText weightEditText;
     private EditText mEnterNameEditText;
+    private EditText heightEditText;
     private static final String CUR_WATER_AMOUNT = "CURRENT WATER AMOUNT";
 
     public static final String EXTRA_MESSAGE
@@ -23,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private Boolean isUserNameValid;
     private Boolean isUserAgeValid;
     private Boolean isUserWeightValid;
+    private Boolean isUserHeightValid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         isUserNameValid = false;
         isUserAgeValid = false;
         isUserWeightValid = false;
+        isUserHeightValid = false;
     }
 
     private void validateUserInput() {
@@ -51,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (start >= 18) {
+                if (start >= NAME_MAXIMUM_LENGTH) {
                     mEnterNameEditText.setError("Maximum Limit Reached!");
                 } else if (mEnterNameEditText.getText().toString().length() == 0) {
                     mEnterNameEditText.setError("name is required!");
@@ -87,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (ageEditText.getText().toString().length() != 0) {
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
-                    if (curAge <= 120 && curAge >= 6) {
+                    if (curAge <= MAXIMUM_AGE && MINIMUM_AGE >= 6) {
                         isUserAgeValid = true;
                     }
                 }
@@ -102,9 +116,9 @@ public class LoginActivity extends AppCompatActivity {
                         return;
                     }
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
-                    if (curAge > 120) {
+                    if (curAge > MAXIMUM_AGE) {
                         ageEditText.setError("age is to old!");
-                    } else if (curAge < 6) {
+                    } else if (curAge < MINIMUM_AGE) {
                         ageEditText.setError("age is to young!");
                     } else {
                         isUserAgeValid = true;
@@ -132,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (weightEditText.getText().toString().length() != 0) {
                     int curWeight = Integer.parseInt(weightEditText.getText().toString());
-                    if (curWeight <= 150 && curWeight >= 6) {
+                    if (curWeight <= MAXIMUM_WEIGHT && curWeight >= MINIMUM_WEIGHT) {
                         isUserWeightValid = true;
                     }
                 }
@@ -147,9 +161,9 @@ public class LoginActivity extends AppCompatActivity {
                         return;
                     }
                     int curWeight = Integer.parseInt(weightEditText.getText().toString());
-                    if (curWeight > 150) {
+                    if (curWeight > LoginActivity.MAXIMUM_WEIGHT) {
                         weightEditText.setError("weight is too big!");
-                    } else if (curWeight < 6) {
+                    } else if (curWeight < MINIMUM_WEIGHT) {
                         weightEditText.setError("weight is too low!");
                     } else {
                         isUserWeightValid = true;
@@ -160,26 +174,65 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validateHeight() {
-    }
+        heightEditText = (EditText) findViewById(R.id.et_enter_height);
+        heightEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (start >= MAXIMUM_LENGTH) {
+                    heightEditText.setError("Maximum Limit Reached!");
+                }
+            }
 
-    public void onRadioButtonClicked(View view) {
-        //todo
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (heightEditText.getText().toString().length() != 0) {
+                    int curHeight = Integer.parseInt(heightEditText.getText().toString());
+                    if (curHeight <= MAXIMUM_HEIGHT && curHeight >= MINIMUM_HEIGHT) {
+                        isUserHeightValid = true;
+                    }
+                }
+            }
+        });
+        heightEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    if (heightEditText.getText().toString().length() == 0) {
+                        heightEditText.setError("height is required!");
+                        return;
+                    }
+                    int curWeight = Integer.parseInt(heightEditText.getText().toString());
+                    if (curWeight > MAXIMUM_HEIGHT) {
+                        heightEditText.setError("max height is 250!");
+                    } else if (curWeight < MINIMUM_HEIGHT) {
+                        heightEditText.setError("minimum height is 50!");
+                    } else {
+                        isUserWeightValid = true;
+                    }
+                }
+            }
+        });
     }
 
     public void checkIfShouldLunchCupsActivity(View view) {
         if (isUserInputValid()) {
             launchCupsActivity();
-        } else { //todo put in place
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Invalid user input!",
-                    Toast.LENGTH_LONG);
-            toast.show();
+        } else {
+            Toast myToast = Toast.makeText(this, "please fill all fields", Toast.LENGTH_LONG);
+            myToast.setGravity(Gravity.TOP|Gravity.LEFT, 300, 300);
+            ViewGroup toastView = (ViewGroup)myToast.getView();
+            TextView tv = (TextView)toastView.getChildAt(0);
+            tv.setTextSize(18);
+            myToast.show();
         }
     }
 
     public boolean isUserInputValid() {
-        if (isUserNameValid && isUserAgeValid && isUserWeightValid) {
+        if (isUserNameValid && isUserAgeValid && isUserWeightValid && isUserHeightValid) {
             return true;
         }
         return false;
@@ -189,7 +242,6 @@ public class LoginActivity extends AppCompatActivity {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
         preferencesEditor.putBoolean("is_first", false);
-        preferencesEditor.putBoolean("is_today_first_time_to_meet_daily_goal", true);
         preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
         preferencesEditor.apply();
         Intent intent = new Intent(this, CupsActivity.class);
