@@ -21,7 +21,9 @@
     <string name="you_drank">You Drank:</string>
     <string name="my_garden">My Garden</string>
     <string name="your_daily_goal">Your Daily Goal: 2500 ML</string>
-    <string name="bt_clean_all">clean all</string>
     <string name="bt_update">Done!</string>
     <string name="login_explain">Our app needs to know a few details about you, in order to provide the best fit</string>
+    <string name="skip_to_my_plant">skip to my plant</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="you_ve_reached_your_daily_goal">You\'ve reached your daily goal!</string>
 </resources>
