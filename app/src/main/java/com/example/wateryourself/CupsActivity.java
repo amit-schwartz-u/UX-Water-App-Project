@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,12 +23,15 @@ public class CupsActivity extends AppCompatActivity {
 //    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 //    List<Model> models;
     ImageButton[] imagesAmountOfWater = new ImageButton[4];
-    ImageView[] littleImageViews = new ImageView[4];
+//    ImageView[] littleImageViews = new ImageView[4];
     static String mName;
-    int currentImage = 0;
-    int[] counters = {0, 0, 0, 0};
+    int amountChosen=0;
+//    int currentImage = 0;
+//    int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
-    TextView[] tv_display_amount = new TextView[4];
+    Button mUpdtaeButton;
+    Button mCleanAllButton;
+//    TextView[] tv_display_amount = new TextView[4];
 
     // Shared preferences object
     private SharedPreferences mPreferences;
@@ -43,43 +45,13 @@ public class CupsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
-        changeCleanAllBtnMode(View.INVISIBLE);
         fillImageButtonsAmountOfWater();
         Intent intent = getIntent();
         updateUserName(intent);
-//        fillTextViewCountAmmount();
-//        makeInvisibleIV();
-
-//        models = new ArrayList<>();
-//        models.add(new Model(R.drawable.cup200));
-//        models.add(new Model(R.drawable.cup500));
-//        models.add(new Model(R.drawable.bottle750));
-//        models.add(new Model(R.drawable.bottle1));
-
-        Button updateButton = findViewById(R.id.update_button);
-        updateButton.setVisibility(View.INVISIBLE);
-//        adapter = new Adapter(models, this);
-//        viewPager = findViewById(R.id.viewPager);
-//        viewPager.setAdapter(adapter);
-//        viewPager.setPadding(130, 0, 130, 0);
-
-//        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//                currentImage = position;
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
+        mUpdtaeButton =  findViewById(R.id.update_button);
+        mCleanAllButton = findViewById(R.id.clean_all_btn);
+        changeBtnMode(mUpdtaeButton,View.INVISIBLE);
+        changeBtnMode(mCleanAllButton,View.INVISIBLE);
 
     }
     private void fillImageButtonsAmountOfWater() {
@@ -92,17 +64,6 @@ public class CupsActivity extends AppCompatActivity {
 
     }
 
-//    private void fillTextViewCountAmmount() {
-//
-//        tv_display_amount[0] = findViewById(R.id.tv_count_200);
-//
-//        tv_display_amount[1] = findViewById(R.id.tv_count_500);
-//
-//        tv_display_amount[2] = findViewById(R.id.tv_count_750);
-//
-//        tv_display_amount[3] = findViewById(R.id.tv_count_1000);
-//
-//    }
 
     private void updateUserName(Intent intent) {
         if (intent.getStringExtra(MainActivity.FROM_MAIN).equals("LOGIN")) {
@@ -120,9 +81,8 @@ public class CupsActivity extends AppCompatActivity {
         textView.setText(String.format("Hi %s !", mName));
     }
 
-    private void changeCleanAllBtnMode(int mode) {
-        Button cleanAll = findViewById(R.id.clean_all_btn);
-        cleanAll.setVisibility(mode);
+    private void changeBtnMode(Button btn,int mode) {
+        btn.setVisibility(mode);
     }
 
 //    private void makeInvisibleIV() {
@@ -134,57 +94,53 @@ public class CupsActivity extends AppCompatActivity {
 //            littleImageViews[i].setVisibility(View.INVISIBLE);
 //        }
 //    }
-
-    public void addAmount(View view) {
-        changeCleanAllBtnMode(View.VISIBLE);
-
-        //prevent user from choosing more than 3 of each cup/bottle
-        if (counters[currentImage]==3){
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "That's too much! You can't pick more than 3",
-                    Toast.LENGTH_LONG);
-            toast.show();
-        }
-
-        else{
-            counters[currentImage]++;
-        }
-        if (counters[currentImage] == 1) {
-            littleImageViews[currentImage].setVisibility(View.VISIBLE);
-        }
-        tv_display_amount[currentImage].setText(Integer.toString(counters[currentImage]));
-        Button updateButton = findViewById(R.id.update_button);
-        updateButton.setVisibility(View.VISIBLE);
-        int totalAmountChosen = 0; //todo: reuse of this value also in launch daily
-        for (int i = 0; i < counters.length; i++) {
-            totalAmountChosen += counters[i] * amounts[i];
-        }
-        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
-        totalAmountText.setText(String.format("Total Amount Chosen: %s ML", Integer.toString(totalAmountChosen)));
-
-    }
+//
+//    public void addAmount(View view) {
+//        changeBtnMode(View.VISIBLE);
+//
+//        //prevent user from choosing more than 3 of each cup/bottle
+//        if (counters[currentImage]==3){
+//            Toast toast = Toast.makeText(getApplicationContext(),
+//                    "That's too much! You can't pick more than 3",
+//                    Toast.LENGTH_LONG);
+//            toast.show();
+//        }
+//
+//        else{
+//            counters[currentImage]++;
+//        }
+//        if (counters[currentImage] == 1) {
+//            littleImageViews[currentImage].setVisibility(View.VISIBLE);
+//        }
+//        tv_display_amount[currentImage].setText(Integer.toString(counters[currentImage]));
+//        Button updateButton = findViewById(R.id.update_button);
+//        updateButton.setVisibility(View.VISIBLE);
+//        int totalAmountChosen = 0; //todo: reuse of this value also in launch daily
+//        for (int i = 0; i < counters.length; i++) {
+//            totalAmountChosen += counters[i] * amounts[i];
+//        }
+//        TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
+//        totalAmountText.setText(String.format("Total Amount Chosen: %s ML", Integer.toString(totalAmountChosen)));
+//
+//    }
 
     public void cleanAmountChosen(View view) {
-        for (int i = 0; i < counters.length; i++) {
-            counters[i] = 0;
-            littleImageViews[i].setVisibility(View.INVISIBLE);
-            tv_display_amount[i].setText("");
-        }
-        changeCleanAllBtnMode(View.INVISIBLE);
-        Button updateButton = findViewById(R.id.update_button);
-        updateButton.setVisibility(View.INVISIBLE);
+//        for (int i = 0; i < counters.length; i++) {
+//            counters[i] = 0;
+//            littleImageViews[i].setVisibility(View.INVISIBLE);
+//            tv_display_amount[i].setText("");
+//        }
+        changeBtnMode(mCleanAllButton,View.INVISIBLE);
+        changeBtnMode(mUpdtaeButton,View.INVISIBLE);
         TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
-        totalAmountText.setText(String.format("Total Amount Chosen: 0 ML"));
+        totalAmountText.setText(String.format("Amount Chosen: 0 ML"));
     }
 
     public void launchDailyActivity(View view) {
-        int totalAmountChosen = 0;
-        for (int i = 0; i < counters.length; i++) {
-            totalAmountChosen += counters[i] * amounts[i];
-        }
+
 
         Intent intent = new Intent(this, DailyActivity.class);
-        intent.putExtra(AMOUNT_OF_WATER, totalAmountChosen);
+        intent.putExtra(AMOUNT_OF_WATER, amountChosen);
         startActivityForResult(intent, MainActivity.TEXT_REQUEST);
     }
 
@@ -194,7 +150,6 @@ public class CupsActivity extends AppCompatActivity {
     }
 
     public void addAmountOfWater(View view) {
-        int amountChosen=0;
         ImageButton amountChosenImg = (ImageButton)view;
 
         for (int i =0;i<imagesAmountOfWater.length;i++){
@@ -203,7 +158,10 @@ public class CupsActivity extends AppCompatActivity {
             }
         }
         TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
-        totalAmountText.setText(String.format("Total Amount Chosen: %s ML", Integer.toString(amountChosen)));
+        totalAmountText.setText(String.format("Amount Chosen: %s ML", Integer.toString(amountChosen)));
+        changeBtnMode(mCleanAllButton,View.VISIBLE);
+        changeBtnMode(mUpdtaeButton,View.VISIBLE);
+
 
     }
 }

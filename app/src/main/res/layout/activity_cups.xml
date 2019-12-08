@@ -55,43 +55,51 @@
         android:id="@+id/cups_images_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/tv_cups_instruction">
+        android:layout_below="@+id/tv_cups_instruction"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/first_row_cups_images_layout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="250dp"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/ib_cup200"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 android:onClick="addAmountOfWater"
+                android:scaleType="fitEnd"
                 android:src="@drawable/cup200">
 
             </ImageButton>
 
             <ImageButton
                 android:id="@+id/ib_cup500"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 android:onClick="addAmountOfWater"
+                android:scaleType="fitEnd"
                 android:src="@drawable/cup500">
 
             </ImageButton>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
             android:id="@+id/second_row_cups_images_layout"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -99,9 +107,12 @@
                 android:id="@+id/ib_bottle750"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:background="#00FFFFFF"
                 android:onClick="addAmountOfWater"
+                android:scaleType="fitStart"
                 android:src="@drawable/bottle750"
                 android:visibility="visible">
 
@@ -111,9 +122,12 @@
                 android:id="@+id/ib_bottle1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="#00FFFFFF"
+                android:background="@color/cardview_shadow_end_color"
                 android:onClick="addAmountOfWater"
+                android:scaleType="fitStart"
                 android:src="@drawable/bottle1">
 
             </ImageButton>
@@ -158,9 +172,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:fontFamily="@font/offerings"
-            android:text="Total Amount Chosen: 0 ML"
+            android:text="Amount Chosen: 0 ML"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#000000"
             android:textSize="22sp"
