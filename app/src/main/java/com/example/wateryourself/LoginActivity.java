@@ -1,7 +1,6 @@
 package com.example.wateryourself;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -101,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (ageEditText.getText().toString().length() != 0) {
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
-                    if (curAge <= MAXIMUM_AGE && MINIMUM_AGE >= 6) {
+                    if (curAge <= MAXIMUM_AGE && curAge >= MINIMUM_AGE) {
                         isUserAgeValid = true;
                     }
                 }
@@ -241,7 +240,7 @@ public class LoginActivity extends AppCompatActivity {
     public void launchCupsActivity() {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();
-        preferencesEditor.putBoolean("is_first", false);
+        preferencesEditor.putBoolean(MyPreferences.IS_FIRST_LOGIN, false);
         preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
         preferencesEditor.apply();
         Intent intent = new Intent(this, CupsActivity.class);

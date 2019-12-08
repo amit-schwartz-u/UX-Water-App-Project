@@ -1,7 +1,6 @@
 package com.example.wateryourself;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,15 +10,15 @@ import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
-    public static final String FROM_MAIN = "called from main"; //todo from
+    public static final String FROM_MAIN = "called from main";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = reader.edit();
-        editor.putBoolean("is_first", true);
+        editor.putBoolean(MyPreferences.IS_FIRST_LOGIN, true);
         editor.apply();
         //Time to launch the another activity
         int TIME_OUT = 3000;
