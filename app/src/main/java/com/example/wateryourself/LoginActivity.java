@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 isUserNameValid = false;
                 if (start >= NAME_MAXIMUM_LENGTH) {
                     mEnterNameEditText.setError("Maximum Limit Reached!");
+                    return;
                 } else if (mEnterNameEditText.getText().toString().length() == 0) {
                     mEnterNameEditText.setError("name is required!");
                 } else {
@@ -97,6 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                 isUserAgeValid = false;
                 if (start >= 4) {
                     ageEditText.setError("Maximum Limit Reached!");
+                    return;
                 }
                 if (ageEditText.getText().toString().length() != 0) {
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
@@ -108,13 +110,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                isUserAgeValid = false;
-                if (ageEditText.getText().toString().length() != 0) {
-                    int curAge = Integer.parseInt(ageEditText.getText().toString());
-                    if (curAge <= MAXIMUM_AGE && curAge >= MINIMUM_AGE) {
-                        isUserAgeValid = true;
-                    }
-                }
+
             }
         });
         ageEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -150,6 +146,7 @@ public class LoginActivity extends AppCompatActivity {
                 isUserWeightValid = false;
                 if (start >= 10) {
                     weightEditText.setError("Maximum Limit Reached!");
+                    return;
                 }
                 if (weightEditText.getText().toString().length() != 0) {
                     int curWeight = Integer.parseInt(weightEditText.getText().toString());
@@ -161,13 +158,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                isUserWeightValid = false;
-                if (weightEditText.getText().toString().length() != 0) {
-                    int curWeight = Integer.parseInt(weightEditText.getText().toString());
-                    if (curWeight <= MAXIMUM_WEIGHT && curWeight >= MINIMUM_WEIGHT) {
-                        isUserWeightValid = true;
-                    }
-                }
+
             }
         });
         weightEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -203,6 +194,7 @@ public class LoginActivity extends AppCompatActivity {
                 isUserHeightValid = false;
                 if (start >= MAXIMUM_LENGTH) {
                     heightEditText.setError("Maximum Limit Reached!");
+                    return;
                 }
                 if (heightEditText.getText().toString().length() != 0) {
                     int curHeight = Integer.parseInt(heightEditText.getText().toString());
@@ -214,13 +206,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                isUserHeightValid = false;
-                if (heightEditText.getText().toString().length() != 0) {
-                    int curHeight = Integer.parseInt(heightEditText.getText().toString());
-                    if (curHeight <= MAXIMUM_HEIGHT && curHeight >= MINIMUM_HEIGHT) {
-                        isUserHeightValid = true;
-                    }
-                }
+
             }
         });
         heightEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
