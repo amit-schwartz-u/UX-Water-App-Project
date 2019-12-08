@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,11 +30,6 @@ public class CupsActivity extends AppCompatActivity {
     // Shared preferences object
     private SharedPreferences mPreferences;
 
-    // Name of shared preferences file
-    private String waterYourselfFile =
-            "com.example.android.waterYourselfprefs";
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +45,10 @@ public class CupsActivity extends AppCompatActivity {
 
     }
     private void fillImageButtonsAmountOfWater() {
-
         imagesAmountOfWater[0] = findViewById(R.id.ib_cup200);
         imagesAmountOfWater[1] = findViewById(R.id.ib_cup500);
         imagesAmountOfWater[2] = findViewById(R.id.ib_bottle750);
         imagesAmountOfWater[3] = findViewById(R.id.ib_bottle1);
-
     }
 
     private void fillImagesId() {
@@ -75,12 +69,12 @@ public class CupsActivity extends AppCompatActivity {
         if (intent.getStringExtra(MainActivity.FROM_MAIN).equals("LOGIN")) {
             mName = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
 
-            final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+            final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
             final SharedPreferences.Editor preferencesEditor = reader.edit();
             preferencesEditor.putString(NAME_STR, mName);
             preferencesEditor.apply();
         } else {
-            mPreferences = getSharedPreferences(waterYourselfFile, MODE_PRIVATE);
+            mPreferences = getSharedPreferences("myPreferences", MODE_PRIVATE);
             mName = mPreferences.getString(NAME_STR, mName);
         }
         TextView textView = findViewById(R.id.tv_hello_name);

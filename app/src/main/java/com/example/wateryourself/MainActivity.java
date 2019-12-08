@@ -11,16 +11,16 @@ import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
-    public static final String FROM_MAIN = "called from main" ; //todo from
+    public static final String FROM_MAIN = "called from main"; //todo from
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences("my_preferences", Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = reader.edit();
         editor.putBoolean("is_first", true);
-        editor.commit();
+        editor.apply();
         //Time to launch the another activity
         int TIME_OUT = 3000;
         new Handler().postDelayed(new Runnable() {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     i = new Intent(MainActivity.this, LoginActivity.class);
                 } else {
                     i = new Intent(MainActivity.this, CupsActivity.class);
-                    i.putExtra(MainActivity.FROM_MAIN,"MAIN");
+                    i.putExtra(MainActivity.FROM_MAIN, "MAIN");
                 }
                 startActivity(i);
                 finish();

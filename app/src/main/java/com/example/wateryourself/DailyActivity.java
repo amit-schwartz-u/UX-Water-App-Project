@@ -12,7 +12,7 @@ import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import java.util.Date;
 
@@ -23,9 +23,6 @@ public class DailyActivity extends AppCompatActivity {
     private int curWaterAmount = 0;
     ConstraintLayout dailyConstraintLayout;
 
-    // Name of shared preferences file
-    private String waterYourselfFile =
-            "com.example.android.waterYourselfprefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +56,8 @@ public class DailyActivity extends AppCompatActivity {
     }
 
     private void setActivityBackgroundImage() {
-        dailyConstraintLayout = findViewById(R.id.constraintLayout1); //todo make sure 250! not 200
-        if (curWaterAmount < 250) { //todo try change to 1 line
+        dailyConstraintLayout = findViewById(R.id.constraintLayout1);
+        if (curWaterAmount < 250) { 
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_0);
         } else if (curWaterAmount < 500) {
             dailyConstraintLayout.setBackgroundResource(R.drawable.daily_stage_250);
@@ -94,7 +91,7 @@ public class DailyActivity extends AppCompatActivity {
 
     private void setCurrentWaterAmount(Intent intent) {
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         curWaterAmount = reader.getInt(CUR_WATER_AMOUNT, 0);
         curWaterAmount += waterToAdd;
         final SharedPreferences.Editor preferencesEditor = reader.edit();
