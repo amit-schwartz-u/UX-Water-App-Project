@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 //todo: write total amount when choosing cups of water on third page
 
@@ -23,12 +22,16 @@ public class CupsActivity extends AppCompatActivity {
 //    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 //    List<Model> models;
     ImageButton[] imagesAmountOfWater = new ImageButton[4];
-//    ImageView[] littleImageViews = new ImageView[4];
+    int[] pickedAmmountImg = new int[4];
+    int[] unpickedAmmountImg = new int[4];
+
+    //    ImageView[] littleImageViews = new ImageView[4];
     static String mName;
     int amountChosen=0;
 //    int currentImage = 0;
 //    int[] counters = {0, 0, 0, 0};
     int[] amounts = {200, 500, 750, 1000};
+
     Button mUpdtaeButton;
     Button mCleanAllButton;
 //    TextView[] tv_display_amount = new TextView[4];
@@ -46,6 +49,7 @@ public class CupsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cups);
         fillImageButtonsAmountOfWater();
+        fillImagesId();
         Intent intent = getIntent();
         updateUserName(intent);
         mUpdtaeButton =  findViewById(R.id.update_button);
@@ -60,6 +64,20 @@ public class CupsActivity extends AppCompatActivity {
         imagesAmountOfWater[1] = findViewById(R.id.ib_cup500);
         imagesAmountOfWater[2] = findViewById(R.id.ib_bottle750);
         imagesAmountOfWater[3] = findViewById(R.id.ib_bottle1);
+        
+    }
+
+    private void fillImagesId() {
+        pickedAmmountImg[0] = R.drawable.chosen_cup200;
+        pickedAmmountImg[1] = R.drawable.chosen_cup500;
+        pickedAmmountImg[2] = R.drawable.chosen_bottle750;
+        pickedAmmountImg[3] = R.drawable.chosen_bottle1;
+
+        unpickedAmmountImg[0] = R.drawable.cup200;
+        unpickedAmmountImg[1] = R.drawable.cup500;
+        unpickedAmmountImg[2] = R.drawable.bottle750;
+        unpickedAmmountImg[3] = R.drawable.bottle1;
+
 
 
     }
@@ -155,6 +173,11 @@ public class CupsActivity extends AppCompatActivity {
         for (int i =0;i<imagesAmountOfWater.length;i++){
             if (amountChosenImg == imagesAmountOfWater[i]){
                 amountChosen = amounts[i];
+                amountChosenImg.setImageDrawable(getResources().getDrawable(pickedAmmountImg[i]));
+            }
+            else
+            {
+                imagesAmountOfWater[i].setImageDrawable(getResources().getDrawable(unpickedAmmountImg[i]));
             }
         }
         TextView totalAmountText = findViewById(R.id.tv_total_amount_chosen);
