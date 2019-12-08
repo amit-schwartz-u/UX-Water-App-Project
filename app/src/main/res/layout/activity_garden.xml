@@ -16,6 +16,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/back_to_my_plant"
         android:onClick="backToDailyActivity"
+        android:background="@drawable/rounded_corners"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -36,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="@string/my_garden"
-        android:fontFamily="@font/offerings"
+        android:fontFamily="@font/comfortaa"
         android:textStyle="bold"
         android:textSize="54sp"
         app:layout_constraintEnd_toEndOf="@+id/logo_garden"

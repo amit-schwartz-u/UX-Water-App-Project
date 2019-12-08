@@ -29,10 +29,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="20dp"
-        android:textColor="#000000"
-        android:textSize="28sp"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:fontFamily="@font/offerings"
+        android:fontFamily="@font/comfortaa"
         android:visibility="visible" />
 
     <TextView
@@ -44,12 +44,11 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="15dp"
-        android:fontFamily="@font/offerings"
+        android:fontFamily="@font/comfortaa"
         android:text="How much water did you drink now?"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="22sp"
         android:visibility="visible" />
 
 
@@ -88,11 +87,11 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:fontFamily="@font/offerings"
+            android:fontFamily="@font/comfortaa"
             android:text="Total Amount Chosen: 0 ML"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#000000"
-            android:textSize="22sp"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -103,11 +102,12 @@
             android:id="@+id/clean_all_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:onClick="cleanAmountChosen"
-            android:text="Clean All"
+            android:text="@string/bt_clean_all"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/rounded_corners"
             app:layout_constraintTop_toTopOf="parent">
 
         </Button>
@@ -244,6 +244,7 @@
         android:layout_alignParentBottom="true"
         android:ellipsize="marquee"
         android:onClick="launchDailyActivity"
-        android:text="update"
+        android:text="@string/bt_update"
+        android:background="@drawable/rounded_corners"
         android:textSize="18sp" />
 </RelativeLayout>
