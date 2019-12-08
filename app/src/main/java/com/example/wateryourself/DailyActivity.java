@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class DailyActivity extends AppCompatActivity {
     private static final String FROM_DAILY = "call from daily"; //todo use
@@ -24,25 +24,10 @@ public class DailyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daily);
         Intent intent = getIntent();
         setCurrentWaterAmount(intent);
-        checkDailyGoalToast(); //todo rename
         TextView textView = findViewById(R.id.tv_you_drank);
         textView.setText(String.format("you drank: %s ML today !", curWaterAmount));
         setActivityBackgroundImage();
         setWelcomeByNameInTop();
-    }
-
-    private void checkDailyGoalToast() {
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
-        Boolean isTodayFirstTimeToMeetGoal = reader.getBoolean("is_today_first_time_to_meet_daily_goal", false);
-        if (curWaterAmount >= 2500 && isTodayFirstTimeToMeetGoal) {
-            final SharedPreferences.Editor preferencesEditor = reader.edit();
-            preferencesEditor.putBoolean("is_today_first_time_to_meet_daily_goal", false);
-            preferencesEditor.apply();
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Great job! you have reached your daily goal! ",
-                    Toast.LENGTH_LONG);
-            toast.show();
-        }
     }
 
     private void setWelcomeByNameInTop() {

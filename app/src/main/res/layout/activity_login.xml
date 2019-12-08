@@ -179,7 +179,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/offerings"
-            android:onClick="onRadioButtonClicked"
             android:text="@string/male_radio"
             android:textColorLink="#4CAF50"
             android:textSize="22sp"

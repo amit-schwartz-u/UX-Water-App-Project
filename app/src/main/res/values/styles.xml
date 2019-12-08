@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="colorControlNormal">#000000</item>//black color
-        <item name="colorControlActivated">@android:color/holo_green_dark</item>
+        <item name="colorControlActivated">@android:color/holo_orange_light</item>
         <item name="colorControlHighlight">#000000</item>
     </style>
 
