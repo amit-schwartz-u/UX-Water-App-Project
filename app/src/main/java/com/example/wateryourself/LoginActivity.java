@@ -205,7 +205,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-              
+
             }
         });
         heightEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
