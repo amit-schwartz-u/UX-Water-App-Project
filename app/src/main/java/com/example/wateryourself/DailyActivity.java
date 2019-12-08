@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -45,23 +44,6 @@ public class DailyActivity extends AppCompatActivity {
         setWelcomeByNameInTop();
 
 
-    }
-
-    private void HandleDifferentDays() {
-
-        if (!(isTheSameDay(retrieveLastDay()))) {
-            resetPage();
-        }
-        updateTodayDate();
-        
-    }
-
-    private void resetPage() {
-        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
-        final SharedPreferences.Editor preferencesEditor = reader.edit();
-        preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
-        preferencesEditor.apply();
-        curWaterAmount = 0;
     }
 
     private void setWelcomeByNameInTop() {
@@ -111,6 +93,23 @@ public class DailyActivity extends AppCompatActivity {
         final SharedPreferences.Editor preferencesEditor = reader.edit();
         preferencesEditor.putInt(CUR_WATER_AMOUNT, curWaterAmount);
         preferencesEditor.apply();
+    }
+
+    private void HandleDifferentDays() {
+
+        if (!(isTheSameDay(retrieveLastDay()))) {
+            resetPage();
+        }
+        updateTodayDate();
+
+    }
+
+    private void resetPage() {
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor preferencesEditor = reader.edit();
+        preferencesEditor.putInt(CUR_WATER_AMOUNT, 0);
+        preferencesEditor.apply();
+        curWaterAmount = 0;
     }
 
     private void updateTodayDate() {
