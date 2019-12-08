@@ -7,4 +7,5 @@
     <color name="cup500color">#C1E4F2</color>
     <color name="bottle750color">#A8DAF0</color>
     <color name="bottle1color">#5FB6DB</color>
+    <color name="buttonColor">#D9FFBF01</color>
 </resources>

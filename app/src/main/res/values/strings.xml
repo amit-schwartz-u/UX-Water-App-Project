@@ -10,15 +10,20 @@
     <string name="gender_label">Gender:</string>
     <string name="female_radio">Female</string>
     <string name="male_radio">Male</string>
-    <string name="welcome_login">Welcome to WaterYourself! \nOur app needs to know a few details about you, in order to provide the best fit</string>
+    <string name="welcome_login">Welcome to WaterYourself!</string>
     <string name="enter_your_height">(in cm) 170</string>
     <string name="height_label">Height:</string>
-    <string name="submit_button">Submit</string>
+    <string name="submit_button">Done!</string>
     <string name="back_to_my_plant">back to my plant</string>
     <string name="my_plants">my plants</string>
     <string name="drink_more">drink more</string>
-    <string name="update">Update</string>
-    <string name="you_drank">you drank:</string>
+    <string name="update">Done!</string>
+    <string name="you_drank">You Drank:</string>
     <string name="my_garden">My Garden</string>
     <string name="your_daily_goal">Your Daily Goal: 2500 ML</string>
+    <string name="bt_update">Done!</string>
+    <string name="login_explain">Our app needs to know a few details about you, in order to provide the best fit</string>
+    <string name="skip_to_my_plant">skip to my plant</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="you_ve_reached_your_daily_goal">You\'ve reached your daily goal!</string>
 </resources>
