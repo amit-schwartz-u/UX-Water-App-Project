@@ -44,7 +44,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/comfortaa"
-        android:text="How much water did you drink now?"
+        android:text="@string/how_much_water_did_you_drink_now"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/cardview_dark_background"
         android:textSize="22sp"
@@ -53,14 +53,14 @@
     <LinearLayout
         android:id="@+id/cups_images_layout"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tv_cups_instruction"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/first_row_cups_images_layout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="225dp"
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:orientation="horizontal">
@@ -97,7 +97,7 @@
         <LinearLayout
             android:id="@+id/second_row_cups_images_layout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="225dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
             android:orientation="horizontal">
@@ -141,6 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/update_button"
         android:layout_below="@+id/cups_images_layout"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -148,9 +149,8 @@
             android:id="@+id/skip_to_my_plant_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_corners"
             android:gravity="center"
             android:onClick="skipToPlant"

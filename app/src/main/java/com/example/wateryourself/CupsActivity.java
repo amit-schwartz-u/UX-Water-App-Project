@@ -22,7 +22,6 @@ public class CupsActivity extends AppCompatActivity {
     static String mName;
     int amountChosen=0;
     int[] amounts = {200, 500, 750, 1000};
-
     Button mUpdateButton;
     Button mSkipButton;
 
@@ -72,7 +71,7 @@ public class CupsActivity extends AppCompatActivity {
 
 
     private void updateUserName(Intent intent) {
-        if (intent.getStringExtra(MainActivity.FROM_MAIN).equals("LOGIN")) {
+        if (intent.getStringExtra(MainActivity.FROM).equals("LOGIN")) {
             mName = intent.getStringExtra(LoginActivity.EXTRA_MESSAGE);
 
             final SharedPreferences reader = getApplicationContext().getSharedPreferences(waterYourselfFile, Context.MODE_PRIVATE);

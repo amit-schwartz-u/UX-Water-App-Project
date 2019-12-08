@@ -11,7 +11,7 @@ import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
-    public static final String FROM_MAIN = "called from main" ; //todo from
+    public static final String FROM = "called from" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                     i = new Intent(MainActivity.this, LoginActivity.class);
                 } else {
                     i = new Intent(MainActivity.this, CupsActivity.class);
-                    i.putExtra(MainActivity.FROM_MAIN,"MAIN");
+                    i.putExtra(MainActivity.FROM,"MAIN");
                 }
                 startActivity(i);
                 finish();

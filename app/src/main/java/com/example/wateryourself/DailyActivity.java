@@ -12,7 +12,6 @@ import android.text.format.DateUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Date;
 
@@ -87,7 +86,7 @@ public class DailyActivity extends AppCompatActivity {
 
     public void launchCupsActivityAgain(View view) {
         Intent intent = new Intent(this, CupsActivity.class);
-        intent.putExtra(MainActivity.FROM_MAIN, "Daily");
+        intent.putExtra(MainActivity.FROM, "Daily");
         startActivity(intent);
     }
 
