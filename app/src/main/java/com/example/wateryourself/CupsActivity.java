@@ -84,7 +84,7 @@ public class CupsActivity extends AppCompatActivity {
             mName = mPreferences.getString(NAME_STR, mName);
         }
         TextView textView = findViewById(R.id.tv_hello_name);
-        textView.setText(String.format("Hi %s !", mName));
+        textView.setText(String.format("Hi %s!", mName));
     }
 
     private void changeBtnMode(Button btn,int mode) {

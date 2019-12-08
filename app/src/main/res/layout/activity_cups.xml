@@ -53,7 +53,7 @@
     <LinearLayout
         android:id="@+id/cups_images_layout"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="470dp"
         android:layout_below="@+id/tv_cups_instruction"
         android:orientation="vertical">
 
@@ -139,11 +139,10 @@
         android:id="@+id/skip_to_plant_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/update_button"
         android:layout_below="@+id/cups_images_layout"
-        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/skip_to_my_plant_btn"
