@@ -7,7 +7,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-
+/**
+ * this activity is presenting the app logo for a few seconds and then disappears.
+ * this activity will be shown on every app visit.
+ */
 public class MainActivity extends AppCompatActivity {
     public static final int TEXT_REQUEST = 1;
     public static final String FROM = "called from" ;
@@ -22,12 +25,12 @@ public class MainActivity extends AppCompatActivity {
         final SharedPreferences.Editor editor = reader.edit();
         editor.putBoolean(MyPreferences.IS_FIRST_LOGIN, true);
         editor.apply();
-        //Time to launch the another activity
+        //Time to launch the next activity
         int TIME_OUT = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = null;
+                Intent i;
                 boolean isFirstRun = MyPreferences.isFirst(MainActivity.this);
                 if (isFirstRun) {
                     //show start activity

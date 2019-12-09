@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * this activity is presenting all grown plants this week so far.
+ * this activity is currently static and not finished.
+ */
 public class GardenActivity extends AppCompatActivity {
 
     @Override
