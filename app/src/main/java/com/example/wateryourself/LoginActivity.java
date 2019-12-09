@@ -78,10 +78,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 isUserNameValid = false;
-                if (start >= NAME_MAXIMUM_LENGTH) {
+                int inputLength = mEnterNameEditText.getText().toString().length();
+                if (inputLength >= NAME_MAXIMUM_LENGTH) {
                     mEnterNameEditText.setError("Maximum Limit Reached!");
                     return;
-                } else if (mEnterNameEditText.getText().toString().length() == 0) {
+                } else if (inputLength == 0) {
                     mEnterNameEditText.setError("name is required!");
                 } else {
                     isUserNameValid = true;
@@ -90,9 +91,6 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (mEnterNameEditText.getText().toString().length() == 0) {
-                    isUserNameValid = false;
-                }
             }
         });
     }
