@@ -139,14 +139,14 @@
         android:id="@+id/skip_to_plant_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/update_button"
+        android:layout_above="@id/btn_update"
         android:layout_below="@+id/cups_images_layout"
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/skip_to_my_plant_btn"
+            android:id="@+id/btn_skip_to_my_plant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -164,7 +164,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/update_button"
+        android:id="@+id/btn_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
