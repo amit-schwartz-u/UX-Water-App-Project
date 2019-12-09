@@ -15,7 +15,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * this is the login activity. The user is required to fill some details about himself, like name, age,
+ * gender etc. in order for us to provide the best drinking daily program. We also included a validation
+ * check for the user inputs.
+ * This activity will only be presented on the first time the user enters the app.
+ */
 public class LoginActivity extends AppCompatActivity {
+    /* constants */
     private static final int MAXIMUM_WEIGHT = 200;
     private static final int MINIMUM_WEIGHT = 6;
     private static final int MAXIMUM_HEIGHT = 250;
@@ -30,9 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEnterNameEditText;
     private EditText heightEditText;
     private static final String CUR_WATER_AMOUNT = "CURRENT WATER AMOUNT";
-
-    public static final String EXTRA_MESSAGE
-            = "com.example.android.WaterYourself.extra.MESSAGE";
+    public static final String EXTRA_MESSAGE = "com.example.android.WaterYourself.extra.MESSAGE";
     private Boolean isUserNameValid;
     private Boolean isUserAgeValid;
     private Boolean isUserWeightValid;
@@ -43,13 +48,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         validateUserInput();
-        mEnterNameEditText = (EditText) findViewById(R.id.et_enter_name);
+        mEnterNameEditText = findViewById(R.id.et_enter_name);
         isUserNameValid = false;
         isUserAgeValid = false;
         isUserWeightValid = false;
         isUserHeightValid = false;
     }
 
+    /**
+     * validating all fields filled by the user
+     */
     private void validateUserInput() {
         validateAge();
         validateName();
@@ -57,8 +65,11 @@ public class LoginActivity extends AppCompatActivity {
         validateHeight();
     }
 
+    /**
+     * validate the entered name.
+     */
     private void validateName() {
-        mEnterNameEditText = (EditText) findViewById(R.id.et_enter_name);
+        mEnterNameEditText = findViewById(R.id.et_enter_name);
         mEnterNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,8 +97,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * validating the age entered. Age has to be between 6 and 120.
+     */
     private void validateAge() {
-        ageEditText = (EditText) findViewById(R.id.et_enter_age);
+        ageEditText = findViewById(R.id.et_enter_age);
         ageEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -129,9 +143,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     int curAge = Integer.parseInt(ageEditText.getText().toString());
                     if (curAge > MAXIMUM_AGE) {
-                        ageEditText.setError("age is to old!");
+                        ageEditText.setError("age is too old!");
                     } else if (curAge < MINIMUM_AGE) {
-                        ageEditText.setError("age is to young!");
+                        ageEditText.setError("age is too young!");
                     } else {
                         isUserAgeValid = true;
                     }
@@ -140,8 +154,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * validating the weight entered. Weight has to be between 6 and 200.
+     */
     private void validateWeight() {
-        weightEditText = (EditText) findViewById(R.id.et_enter_weight);
+        weightEditText = findViewById(R.id.et_enter_weight);
         weightEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -193,8 +210,11 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * validating the height entered. Height has to be between 50 and 250.
+     */
     private void validateHeight() {
-        heightEditText = (EditText) findViewById(R.id.et_enter_height);
+        heightEditText = findViewById(R.id.et_enter_height);
         heightEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -246,19 +266,25 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * checks if the next activity should be launched, according to user inputs.
+     */
     public void checkIfShouldLunchCupsActivity(View view) {
         if (isUserInputValid()) {
             launchCupsActivity();
         } else {
-            Toast myToast = Toast.makeText(this, "please fill all fields", Toast.LENGTH_LONG);
-            myToast.setGravity(Gravity.TOP | Gravity.LEFT, 300, 300);
+            Toast myToast = Toast.makeText(this, "please make sure all fields are filled correctly :)", Toast.LENGTH_LONG);
+            myToast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 300);
             ViewGroup toastView = (ViewGroup) myToast.getView();
             TextView tv = (TextView) toastView.getChildAt(0);
-            tv.setTextSize(18);
+            tv.setTextSize(14);
             myToast.show();
         }
     }
 
+    /**
+     * checks if all user inputs are valid.
+     */
     public boolean isUserInputValid() {
         if (isUserNameValid && isUserAgeValid && isUserWeightValid && isUserHeightValid) {
             return true;
@@ -266,6 +292,10 @@ public class LoginActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * launching the cups activity after the user filled all login fields correctly. All the filled
+     * data is saved to preferences and the name is transferred to the next activity.
+     */
     public void launchCupsActivity() {
         final SharedPreferences reader = getApplicationContext().getSharedPreferences("myPreferences", Context.MODE_PRIVATE);
         final SharedPreferences.Editor preferencesEditor = reader.edit();

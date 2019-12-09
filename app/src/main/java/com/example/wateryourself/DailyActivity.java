@@ -15,6 +15,11 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+/**
+ * this activity is responsible for presenting the daily drinking progress. The daily goal is stated
+ * and so is the amount drank so far. at the right side of the screen there is a raising bar which
+ * shows progress as well. The background image is the plant which keeps growing as the user drinks.
+ */
 public class DailyActivity extends AppCompatActivity {
     private static final String LAST_TIME_VISITED = "last time visited";
     private int curWaterAmount = 0;
@@ -162,7 +167,7 @@ public class DailyActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { // disabling the back button of android
 
     }
 }

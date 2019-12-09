@@ -11,7 +11,12 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-
+/**
+ * this activity is responsible for the user choice. All kinds of cup sizes appear and the user is required
+ * to choose one (according to the amount he drank). The user can also move to see his progress
+ * without updating an amount. For simpler user interface, we decided that the user can choose only one
+ * kind of cup at a time.
+ */
 public class CupsActivity extends AppCompatActivity {
 
     public static final String NAME_STR = "STRING OF USERNAME";
