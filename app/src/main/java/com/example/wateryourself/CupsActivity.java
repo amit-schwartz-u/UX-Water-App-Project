@@ -24,6 +24,7 @@ public class CupsActivity extends AppCompatActivity {
     ImageButton[] imagesAmountOfWater = new ImageButton[4];
     int[] pickedAmmountImg = new int[4];
     int[] unpickedAmmountImg = new int[4];
+    int[] pickedIndicator = {0,0,0,0};
     static String mName;
     int amountChosen=0;
     int[] amounts = {200, 500, 750, 1000};
@@ -143,16 +144,27 @@ public class CupsActivity extends AppCompatActivity {
 
         for (int i =0;i<imagesAmountOfWater.length;i++){
             if (amountChosenImg == imagesAmountOfWater[i]){
-                amountChosen = amounts[i];
-                amountChosenImg.setImageDrawable(getResources().getDrawable(pickedAmmountImg[i]));
+                if (pickedIndicator[i] == 0) {
+                    amountChosen = amounts[i];
+                    amountChosenImg.setImageDrawable(getResources().getDrawable(pickedAmmountImg[i]));
+                    changeBtnMode(mSkipButton,View.INVISIBLE);
+                    changeBtnMode(mUpdateButton,View.VISIBLE);
+                    pickedIndicator[i] = 1;
+                }
+                else {
+                    amountChosen =0;
+                    amountChosenImg.setImageDrawable(getResources().getDrawable(unpickedAmmountImg[i]));
+                    changeBtnMode(mSkipButton,View.VISIBLE);
+                    changeBtnMode(mUpdateButton,View.INVISIBLE);
+                    pickedIndicator[i] = 0;
+                }
             }
             else
             {
+                pickedIndicator[i] = 0 ;
                 imagesAmountOfWater[i].setImageDrawable(getResources().getDrawable(unpickedAmmountImg[i]));
             }
         }
-        changeBtnMode(mSkipButton,View.INVISIBLE);
-        changeBtnMode(mUpdateButton,View.VISIBLE);
 
     }
 }

@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
-//        final SharedPreferences.Editor editor = reader.edit();
-//        editor.putBoolean(MyPreferences.IS_FIRST_LOGIN, true);
-//        editor.apply();
+        final SharedPreferences reader = getApplicationContext().getSharedPreferences(MyPreferences.MY_PREFERENCES, Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = reader.edit();
+        editor.putBoolean(MyPreferences.IS_FIRST_LOGIN, true);
+        editor.apply();
         //Time to launch the next activity
         int TIME_OUT = 3000;
         new Handler().postDelayed(new Runnable() {
