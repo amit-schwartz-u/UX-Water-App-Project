@@ -42,8 +42,8 @@ public class CupsActivity extends AppCompatActivity {
         fillImagesId();
         Intent intent = getIntent();
         updateUserName(intent);
-        mUpdateButton =  findViewById(R.id.update_button);
-        mSkipButton = findViewById(R.id.skip_to_my_plant_btn);
+        mUpdateButton =  findViewById(R.id.btn_update);
+        mSkipButton = findViewById(R.id.btn_skip_to_my_plant);
         changeBtnMode(mUpdateButton,View.INVISIBLE);
         changeBtnMode(mSkipButton,View.VISIBLE);
 

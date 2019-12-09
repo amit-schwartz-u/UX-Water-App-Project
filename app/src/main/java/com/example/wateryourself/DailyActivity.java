@@ -31,7 +31,7 @@ public class DailyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daily);
         Intent intent = getIntent();
         int waterToAdd = intent.getIntExtra(CupsActivity.AMOUNT_OF_WATER, 0);
-        ImageView rain = findViewById(R.id.im_rain);
+        ImageView rain = findViewById(R.id.iv_im_rain);
         if (waterToAdd != 0) { //enables rain animation if user enters an amount of water
             ObjectAnimator animation = ObjectAnimator.ofFloat(rain, "translationY", 2000f);
             animation.setDuration(3000);
