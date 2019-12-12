@@ -24,9 +24,9 @@ public class CupsActivity extends AppCompatActivity {
     ImageButton[] imagesAmountOfWater = new ImageButton[4];
     int[] pickedAmmountImg = new int[4];
     int[] unpickedAmmountImg = new int[4];
-    int[] pickedIndicator = {0,0,0,0};
+    int[] pickedIndicator = {0, 0, 0, 0};
     static String mName;
-    int amountChosen=0;
+    int amountChosen = 0;
     int[] amounts = {200, 500, 750, 1000};
     Button mUpdateButton;
     Button mSkipButton;
@@ -43,10 +43,10 @@ public class CupsActivity extends AppCompatActivity {
         fillImagesId();
         Intent intent = getIntent();
         updateUserName(intent);
-        mUpdateButton =  findViewById(R.id.btn_update);
+        mUpdateButton = findViewById(R.id.btn_update);
         mSkipButton = findViewById(R.id.btn_skip_to_my_plant);
-        changeBtnMode(mUpdateButton,View.INVISIBLE);
-        changeBtnMode(mSkipButton,View.VISIBLE);
+        changeBtnMode(mUpdateButton, View.INVISIBLE);
+        changeBtnMode(mSkipButton, View.VISIBLE);
 
     }
 
@@ -79,6 +79,7 @@ public class CupsActivity extends AppCompatActivity {
     /**
      * The function displays the user's name (from which it got from the previous activity) in this
      * activity
+     *
      * @param intent
      */
     private void updateUserName(Intent intent) {
@@ -98,10 +99,11 @@ public class CupsActivity extends AppCompatActivity {
 
     /**
      * Changes the visibility mode of the given button
-     * @param btn the button who's mode to be changed
+     *
+     * @param btn  the button who's mode to be changed
      * @param mode the mode to change to
      */
-    private void changeBtnMode(Button btn,int mode) {
+    private void changeBtnMode(Button btn, int mode) {
         btn.setVisibility(mode);
     }
 
@@ -109,6 +111,7 @@ public class CupsActivity extends AppCompatActivity {
      * This function is activated when the "skip to my plant" button is called. It calls the Daily
      * activity launcher function and by that the user is able to skip the option of picking an
      * amount of water if he just wants to see his progress.
+     *
      * @param view
      */
     public void skipToPlant(View view) {
@@ -117,6 +120,7 @@ public class CupsActivity extends AppCompatActivity {
 
     /**
      * Launches the next activity, sends to it the amount of water chosen by the user.
+     *
      * @param view
      */
     public void launchDailyActivity(View view) {
@@ -137,31 +141,29 @@ public class CupsActivity extends AppCompatActivity {
     /**
      * The function is called when any one of the image buttons are pressed.
      * The function presents the image button that was chosen.
+     *
      * @param view the image button that was pressed
      */
     public void selectAmountOfWater(View view) {
-        ImageButton amountChosenImg = (ImageButton)view;
+        ImageButton amountChosenImg = (ImageButton) view;
 
-        for (int i =0;i<imagesAmountOfWater.length;i++){
-            if (amountChosenImg == imagesAmountOfWater[i]){
+        for (int i = 0; i < imagesAmountOfWater.length; i++) {
+            if (amountChosenImg == imagesAmountOfWater[i]) {
                 if (pickedIndicator[i] == 0) {
                     amountChosen = amounts[i];
                     amountChosenImg.setImageDrawable(getResources().getDrawable(pickedAmmountImg[i]));
-                    changeBtnMode(mSkipButton,View.INVISIBLE);
-                    changeBtnMode(mUpdateButton,View.VISIBLE);
+                    changeBtnMode(mSkipButton, View.INVISIBLE);
+                    changeBtnMode(mUpdateButton, View.VISIBLE);
                     pickedIndicator[i] = 1;
-                }
-                else {
-                    amountChosen =0;
+                } else {
+                    amountChosen = 0;
                     amountChosenImg.setImageDrawable(getResources().getDrawable(unpickedAmmountImg[i]));
-                    changeBtnMode(mSkipButton,View.VISIBLE);
-                    changeBtnMode(mUpdateButton,View.INVISIBLE);
+                    changeBtnMode(mSkipButton, View.VISIBLE);
+                    changeBtnMode(mUpdateButton, View.INVISIBLE);
                     pickedIndicator[i] = 0;
                 }
-            }
-            else
-            {
-                pickedIndicator[i] = 0 ;
+            } else {
+                pickedIndicator[i] = 0;
                 imagesAmountOfWater[i].setImageDrawable(getResources().getDrawable(unpickedAmmountImg[i]));
             }
         }
