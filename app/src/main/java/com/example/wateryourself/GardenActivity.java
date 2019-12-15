@@ -32,6 +32,5 @@ public class GardenActivity extends AppCompatActivity {
      * Disables the phone's back button to prevent its use in this activity of the app
      */
     public void onBackPressed() {
-
     }
 }
